@@ -6,6 +6,9 @@ class NavbarController {
     'title': 'Home',
     'state': 'main'
   },{
+    'title': 'Import',
+    'state': 'import'
+  },{
       'title': 'Map',
       'state': 'map'
   }
