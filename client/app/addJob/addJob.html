@@ -6,12 +6,56 @@
 </br>
 <div class="container">
       <form ng-submit="addjob.createJob()">
-        <div>Job Title:         <input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
-        <div>Job Description:   <input ng-model="addjob.jobDescription" type="text" placeholder=""></div>
-        <div>Job Location:      <input ng-model="addjob.jobLocation" type="text" placeholder=""></div>
-        <div>Start Time:        <input ng-model="addjob.startTime" type="text" placeholder=""></div>
-        <div>Shift Length:      <input ng-model="addjob.shiftLength" type="text" placeholder=""></div>
-        <div>Training Overlap:  <input ng-model="addjob.trainOverlap" type="text" placeholder=""></div>
-        <input type="submit" value="submit" class="btn btn-primary">
+        <div>Job Title:         </br><input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
+        <div>Job Description:   </br><textarea ng-model="addjob.jobDescription" placeholder="" rows="4" cols="50"></textarea></div>
+        <div>Job Location:      </br><input ng-model="addjob.jobLocation" type="text" placeholder=""></div>
+        <div>Start Time:
+          </br>
+          <select>
+            <option value="12">12</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>'
+          </select> :
+          <select>
+            <option value="1">00</option>
+            <option value="2">15</option>
+            <option value="3">30</option>
+            <option value="4">45</option>
+          </select>
+          <select>
+            <option value="1">AM</option>
+            <option value="2">PM</option>
+          </select>
+        </div>
+        <div>Shift Length:
+          </br>
+          <select>
+            <option value="1">1</option>
+            <option value="2">1.5</option>
+            <option value="3">2</option>
+            <option value="4">2.5</option>
+          </select>
+          Hours
+        </div>
+        <div>Training Overlap:
+          </br>
+          <select>
+            <option value="1">5</option>
+            <option value="2">10</option>
+            <option value="3">15</option>
+            <option value="4">20</option>
+          </select>
+          Minutes
+        </div>
+        </br><input type="submit" value="submit" class="btn btn-primary">
       </form>
 </div>
