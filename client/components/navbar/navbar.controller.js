@@ -9,8 +9,11 @@ class NavbarController {
     'title': 'Import',
     'state': 'import'
   },{
-      'title': 'Map',
-      'state': 'map'
+    'title': 'Map',
+    'state': 'map'
+  },{
+    'title': 'Add a Job',
+    'state': 'addJob'
   }
   ];
 

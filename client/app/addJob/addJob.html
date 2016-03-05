@@ -1,0 +1,17 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Add a New Job</h1>
+  </div>
+</header>
+</br>
+<div class="container">
+      <form ng-submit="addjob.createJob()">
+        <div>Job Title:         <input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
+        <div>Job Description:   <input ng-model="addjob.jobDescription" type="text" placeholder=""></div>
+        <div>Job Location:      <input ng-model="addjob.jobLocation" type="text" placeholder=""></div>
+        <div>Start Time:        <input ng-model="addjob.startTime" type="text" placeholder=""></div>
+        <div>Shift Length:      <input ng-model="addjob.shiftLength" type="text" placeholder=""></div>
+        <div>Training Overlap:  <input ng-model="addjob.trainOverlap" type="text" placeholder=""></div>
+        <input type="submit" value="submit" class="btn btn-primary">
+      </form>
+</div>
