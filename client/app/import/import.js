@@ -6,6 +6,7 @@ angular.module('ulyssesCreatorsApp')
       .state('import', {
         url: '/import',
         templateUrl: 'app/import/import.html',
-        controller: 'ImportCtrl'
+        controller: 'ImportController',
+        controllerAs: 'import'
       });
   });
