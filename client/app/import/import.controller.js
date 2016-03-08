@@ -6,19 +6,33 @@ class ImportController {
 
   constructor($http, $scope, socket) {
     self = this;
-    this.$http = $http;
+    self.$http = $http;
 
     self.volunteerFile;
-    self.parsedVolunteerCSV;
+    self.volunteerArray;
   }
 
   processVolunteerData() {
-      console.log(self.volunteerFile)
-      Papa.parse(self.volunteerFile, {header: true, dynamicTyping: true, complete: function(res) {self.parsedVolunteerCSV = res.data;}});
+      console.log(self.volunteerFile);
+      Papa.parse(self.volunteerFile, {
+        header: true,
+        dynamicTyping: true,
+        complete: function(res) {
+          self.volunteerArray = res.data;
+          self.uploadVolunteers();
+        }
+      });
   }
 
   showVolunteerData() {
-      console.log(self.parsedVolunteerCSV);
+      console.log(self.volunteerArray);
+  }
+
+  uploadVolunteers() {
+    console.log(self.volunteerArray[0]);
+    //for (var i = 0; i < self.volunteerArray.length; i++) {
+      self.$http.post('/api/volunteers/', self.volunteerArray[0]);
+    //}
   }
 
 

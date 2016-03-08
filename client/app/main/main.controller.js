@@ -8,7 +8,7 @@ class MainController {
     this.$http = $http;
     this.awesomeThings = [];
 
-    $http.get('/api/things').then(response => {
+    $http.get('/api/volunteers').then(response => {
       this.awesomeThings = response.data;
       socket.syncUpdates('thing', this.awesomeThings);
     });

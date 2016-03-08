@@ -4,7 +4,8 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var VolunteerSchema = new mongoose.Schema({
   '': String,
-  'Coach Email': String,
+  'Coach E-mail': String,
+  'Coach name': String,
   'Division': Number,
   'E-mail': String,
   'First name': String,
@@ -40,7 +41,7 @@ var VolunteerSchema = new mongoose.Schema({
   'member_exp': Number,
   'modify_on':  String,
   'password':  String,
-  'phone': Number,
+  'phone': String,
   'position_helds':  String,
   'state':  String,
   'street1':  String,
