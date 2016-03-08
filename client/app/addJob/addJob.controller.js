@@ -10,6 +10,7 @@
 
     constructor($http, $scope, socket) {
       self = this;
+
       self.jobTitle = "";
       self.jobDescription = "";
       self.jobLocation = "";
