@@ -68,8 +68,8 @@
             jobTitle: self.jobTitle,
             jobDescription: self.jobDescription,
             jobLocation: self.jobLocation,
-            startTime: self.startTime,
-            shiftLength: self.shiftLength,
+            startTime: self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM,
+            shiftLength: self.shiftLengthHours + self.shiftLengthMinutes,
             trainOverLap: self.trainOverLap
         })
 
