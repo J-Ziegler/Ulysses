@@ -10,6 +10,7 @@
 
     constructor($http, $scope, socket) {
       self = this;
+      self.$http = $http;
 
       self.jobTitle = "";
       self.jobDescription = "";
@@ -60,6 +61,24 @@
         array.push(i);
       }
       return array;
+	}
+
+    uploadJob() {
+        self.$http.post('/api/jobs/', {
+            jobTitle: self.jobTitle,
+            jobDescription: self.jobDescription,
+            jobLocation: self.jobLocation,
+            startTime: self.startTime,
+            shiftLength: self.shiftLength,
+            trainOverLap: self.trainOverLap
+        })
+
+        self.jobTitle = "";
+        self.jobDescription = "";
+        self.jobLocation = "";
+        self.startTime = "";
+        self.shiftLength = "";
+        self.trainOverlap = "";
     }
 
   }

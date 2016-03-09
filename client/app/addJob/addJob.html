@@ -42,6 +42,7 @@
             <option ng-repeat="thing in addjob.makeMinuteArray(addjob.trainingOverlapMinutesArray)" value = {{thing}} >{{thing}}</option>
           </select>
         </div>
-        </br><input type="submit" value="submit" class="btn btn-primary">
+        </br>
+        <button class="btn btn-primary" ng-click="addjob.uploadJob()">Add Job</button>
       </form>
 </div>
