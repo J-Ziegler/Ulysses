@@ -18,8 +18,37 @@
       self.shiftLength = "";
       self.trainOverlap = "";
 
-      self.startTimeMinutes = 1;
+      self.startTimeHours = "12";
+      self.startTimeHoursArray = [];
+      self.startTimeMinutes = "0" + 0;
       self.startTimeMinutesArray = [];
+      self.startTimeAMPM = "AM";
+
+      self.shiftLengthHours = "1";
+      self.shiftLengthHoursArray = [];
+      self.shiftLengthMinutes = "0" + 0;
+      self.shiftLengthMinutesArray = [];
+
+      self.trainingOverlapHours = "0";
+      self.trainingOverlapHoursArray = [];
+      self.trainingOverlapMinutes = "10";
+      self.trainingOverlapMinutesArray = [];
+    }
+
+    makeHourArray(array){
+      array=[];
+      for(var i=1; i<=12; i++){
+        array.push(i);
+      }
+      return array;
+    }
+
+    makeLengthHourArray(array){
+      array=[];
+      for(var i=0; i<=12; i++){
+        array.push(i);
+      }
+      return array;
     }
 
     makeMinuteArray(array){

@@ -6,7 +6,7 @@ angular.module('ulyssesCreatorsApp')
       .state('addJob', {
         url: '/addJob',
         templateUrl: 'app/addJob/addJob.html',
-        controller: 'AddJobCtrl',
+        controller: 'addJobController',
         controllerAs: 'addjob'
       });
   });
