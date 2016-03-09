@@ -20,20 +20,21 @@
       self.trainOverlap = "";
 
       self.startTimeHours = "12";
-      self.startTimeHoursArray = [];
       self.startTimeMinutes = "0" + 0;
-      self.startTimeMinutesArray = [];
       self.startTimeAMPM = "AM";
 
       self.shiftLengthHours = "1";
-      self.shiftLengthHoursArray = [];
       self.shiftLengthMinutes = "0" + 0;
-      self.shiftLengthMinutesArray = [];
 
       self.trainingOverlapHours = "0";
-      self.trainingOverlapHoursArray = [];
       self.trainingOverlapMinutes = "10";
-      self.trainingOverlapMinutesArray = [];
+
+      self.startTimeHoursArray = [];
+      self.MinutesArray = [];
+      self.LengthHoursArray = [];
+
+
+
     }
 
     makeHourArray(array){
@@ -79,6 +80,16 @@
         self.startTime = "";
         self.shiftLength = "";
         self.trainOverlap = "";
+
+        self.startTimeHours = "12";
+        self.startTimeMinutes = "0" + 0;
+        self.startTimeAMPM = "AM";
+
+        self.shiftLengthHours = "1";
+        self.shiftLengthMinutes = "0" + 0;
+
+        self.trainingOverlapHours = "0";
+        self.trainingOverlapMinutes = "10";
     }
 
   }
