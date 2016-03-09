@@ -30,9 +30,9 @@ class ImportController {
 
   uploadVolunteers() {
     console.log(self.volunteerArray[0]);
-    //for (var i = 0; i < self.volunteerArray.length; i++) {
-      self.$http.post('/api/volunteers/', self.volunteerArray[0]);
-    //}
+    for (var i = 0; i < self.volunteerArray.length; i++) {
+      self.$http.post('/api/volunteers/', self.volunteerArray[i]);
+    }
   }
 
 
