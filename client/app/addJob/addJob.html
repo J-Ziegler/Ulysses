@@ -17,7 +17,7 @@
             <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
           </select>:
           <select ng-model="addjob.startTimeMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.startTimeMinutesArray)" value = {{thing}} >{{thing}}</option>
+            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
           </select>
           <select ng-model="addjob.startTimeAMPM">
             <option value="AM">AM</option>
@@ -27,19 +27,19 @@
         <div>Shift Length:
           </br>
           <select ng-model="addjob.shiftLengthHours">
-            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.shiftLengthHoursArray)" value = {{thing}} >{{thing}}</option>
+            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.LengthHoursArray)" value = {{thing}} >{{thing}}</option>
           </select>:
           <select ng-model="addjob.shiftLengthMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.shiftLengthMinutesArray)" value = {{thing}} >{{thing}}</option>
+            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
           </select>
         </div>
         <div>Training Overlap:
           </br>
           <select ng-model="addjob.trainingOverlapHours">
-            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.trainingOverlapHoursArray)" value = {{thing}} >{{thing}}</option>
+            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.LengthHoursArray)" value = {{thing}} >{{thing}}</option>
           </select>:
           <select ng-model="addjob.trainingOverlapMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.trainingOverlapMinutesArray)" value = {{thing}} >{{thing}}</option>
+            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
           </select>
         </div>
         </br>
