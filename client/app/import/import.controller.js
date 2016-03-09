@@ -20,6 +20,7 @@ class ImportController {
         complete: function(res) {
           self.volunteerArray = res.data;
           self.uploadVolunteers();
+          location.reload();
         }
       });
   }
