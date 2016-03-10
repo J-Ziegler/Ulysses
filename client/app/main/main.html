@@ -15,7 +15,6 @@
       <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers">
         <li>{{volunteer['Last name']}}, {{volunteer['First name']}}</li>
       </ul>
-      <hr ng-if="volunteerChecked;jobChecked">
       <ul class="nav nav-stacked nav-tabs" ng-if="jobChecked" ng-repeat="job in main.jobs">
         <li>{{job.jobTitle}}</li>
       </ul>
