@@ -6,13 +6,21 @@
 
 <div class="container">
 
+    <label>Show Volunteers: <input type="checkbox" ng-model="volunteerChecked" ng-init="checked=false" /></label>
+    <label>Show Jobs: <input type="checkbox" ng-model="jobChecked" ng-init="checked=false" /></label>
+
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Look a list</h1>
-      <ul class="nav nav-stacked nav-tabs" ng-repeat="thing in main.awesomeThings">
-        <li>{{thing['First name']}}</li>
+      <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers">
+        <li>{{volunteer['Last name']}}, {{volunteer['First name']}}</li>
+      </ul>
+      <hr ng-if="volunteerChecked;jobChecked">
+      <ul class="nav nav-stacked nav-tabs" ng-if="jobChecked" ng-repeat="job in main.jobs">
+        <li>{{job.jobTitle}}</li>
       </ul>
     </div>
   </div>
-  
+
+
 </div>
