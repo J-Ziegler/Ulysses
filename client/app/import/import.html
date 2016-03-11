@@ -11,10 +11,10 @@
 
   <br>
 
-  <form class="col-md-12">
+  <form class="col-md-12" onsubmit="this.reset()">
     <input type='file' file="import.volunteerFile" />
     <br>
-    <button class="btn btn-primary" ng-click="import.processVolunteerData()">Upload</button>
+    <button type="submit" class="btn {{import.importButtonType}}" ng-click="import.processVolunteerData()" {{import.disableImportButton}}>{{import.importButtonText}}</button>
     </form>
   </div>
 
