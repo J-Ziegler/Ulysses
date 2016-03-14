@@ -63,7 +63,7 @@
         array.push("0" + i);
       }
       for(var i=10; i<60; i++){
-        array.push(i);
+        array.push(i.toString());
       }
       return array;
 	}
