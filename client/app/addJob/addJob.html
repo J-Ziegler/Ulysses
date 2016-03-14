@@ -33,6 +33,19 @@
             <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
           </select>
         </div>
+        <div>End Time:
+          </br>
+          <select ng-model="addjob.endTimeHours">
+            <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
+          </select>:
+          <select ng-model="addjob.endTimeMinutes">
+            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
+          </select>
+          <select ng-model="addjob.endTimeAMPM">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
         <div>Training Overlap:
           </br>
           <select ng-model="addjob.trainingOverlapHours">

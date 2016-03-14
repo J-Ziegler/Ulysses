@@ -23,6 +23,10 @@
       self.startTimeMinutes = "0" + 0;
       self.startTimeAMPM = "AM";
 
+      self.endTimeHours = "12";
+      self.endTimeMinutes = "0" + 0;
+      self.endTimeAMPM = "AM";
+
       self.shiftLengthHours = "1";
       self.shiftLengthMinutes = "0" + 0;
 
@@ -66,6 +70,7 @@
 
     uploadJob() {
         self.$http.post('/api/jobs/', {
+            endTime: self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM,
             jobTitle: self.jobTitle,
             jobDescription: self.jobDescription,
             jobLocation: self.jobLocation,
@@ -87,6 +92,10 @@
 
         self.shiftLengthHours = "1";
         self.shiftLengthMinutes = "0" + 0;
+
+        self.startTimeHours = "12";
+        self.startTimeMinutes = "0" + 0;
+        self.startTimeAMPM = "AM";
 
         self.trainingOverlapHours = "0";
         self.trainingOverlapMinutes = "10";
