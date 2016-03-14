@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: AddJobCtrl', function () {
+describe('Controller: addJobController', function () {
 
   // load the controller's module
   beforeEach(module('ulyssesCreatorsApp'));
 
-  var AddJobCtrl, scope;
+  var addJobController, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    AddJobCtrl = $controller('AddJobCtrl', {
+    addJobController = $controller('addJobController', {
       $scope: scope
     });
   }));

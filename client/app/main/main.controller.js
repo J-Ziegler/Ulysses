@@ -14,7 +14,7 @@ class MainController {
       socket.syncUpdates('volunteer', this.volunteers);
     });
 
-    $http.get('api/jobs').then(response => {
+    $http.get('/api/jobs').then(response => {
       this.jobs = response.data;
       socket.syncUpdates('job', this.jobs);
     });

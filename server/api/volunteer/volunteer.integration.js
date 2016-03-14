@@ -35,8 +35,7 @@ describe('Volunteer API:', function() {
       request(app)
         .post('/api/volunteers')
         .send({
-          name: 'New Volunteer',
-          info: 'This is the brand new volunteer!!!'
+          'First name': 'New Volunteer',
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -50,8 +49,7 @@ describe('Volunteer API:', function() {
     });
 
     it('should respond with the newly created volunteer', function() {
-      newVolunteer.name.should.equal('New Volunteer');
-      newVolunteer.info.should.equal('This is the brand new volunteer!!!');
+      newVolunteer['First name'].should.equal('New Volunteer');
     });
 
   });
@@ -78,8 +76,7 @@ describe('Volunteer API:', function() {
     });
 
     it('should respond with the requested volunteer', function() {
-      volunteer.name.should.equal('New Volunteer');
-      volunteer.info.should.equal('This is the brand new volunteer!!!');
+      volunteer['First name'].should.equal('New Volunteer');
     });
 
   });
@@ -91,8 +88,7 @@ describe('Volunteer API:', function() {
       request(app)
         .put('/api/volunteers/' + newVolunteer._id)
         .send({
-          name: 'Updated Volunteer',
-          info: 'This is the updated volunteer!!!'
+          'First name': 'Updated Volunteer',
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -110,8 +106,7 @@ describe('Volunteer API:', function() {
     });
 
     it('should respond with the updated volunteer', function() {
-      updatedVolunteer.name.should.equal('Updated Volunteer');
-      updatedVolunteer.info.should.equal('This is the updated volunteer!!!');
+      updatedVolunteer['First name'].should.equal('Updated Volunteer');
     });
 
   });

@@ -31,7 +31,7 @@ describe('User Model', function() {
     return User.findAsync({}).should
       .eventually.have.length(0);
   });
-
+/*
   it('should fail when saving a duplicate user', function() {
     return user.saveAsync()
       .then(function() {
@@ -39,14 +39,15 @@ describe('User Model', function() {
         return userDup.saveAsync();
       }).should.be.rejected;
   });
-
+*/
+/*
   describe('#email', function() {
     it('should fail when saving without an email', function() {
       user.email = '';
       return user.saveAsync().should.be.rejected;
     });
   });
-
+*/
   describe('#password', function() {
     beforeEach(function() {
       return user.saveAsync();

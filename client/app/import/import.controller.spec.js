@@ -5,12 +5,12 @@ describe('Controller: ImportCtrl', function () {
   // load the controller's module
   beforeEach(module('ulyssesCreatorsApp'));
 
-  var ImportCtrl, scope;
+  var importController, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ImportCtrl = $controller('ImportCtrl', {
+    importController = $controller('ImportController', {
       $scope: scope
     });
   }));

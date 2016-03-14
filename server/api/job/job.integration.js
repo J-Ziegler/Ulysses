@@ -35,8 +35,8 @@ describe('Job API:', function() {
       request(app)
         .post('/api/jobs')
         .send({
-          name: 'New Job',
-          info: 'This is the brand new job!!!'
+          jobTitle: 'New Job',
+          jobDescription: 'This is the brand new job!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -50,8 +50,8 @@ describe('Job API:', function() {
     });
 
     it('should respond with the newly created job', function() {
-      newJob.name.should.equal('New Job');
-      newJob.info.should.equal('This is the brand new job!!!');
+      newJob.jobTitle.should.equal('New Job');
+      newJob.jobDescription.should.equal('This is the brand new job!!!');
     });
 
   });
@@ -78,8 +78,8 @@ describe('Job API:', function() {
     });
 
     it('should respond with the requested job', function() {
-      job.name.should.equal('New Job');
-      job.info.should.equal('This is the brand new job!!!');
+      job.jobTitle.should.equal('New Job');
+      job.jobDescription.should.equal('This is the brand new job!!!');
     });
 
   });
@@ -91,8 +91,8 @@ describe('Job API:', function() {
       request(app)
         .put('/api/jobs/' + newJob._id)
         .send({
-          name: 'Updated Job',
-          info: 'This is the updated job!!!'
+          jobTitle: 'Updated Job',
+          jobDescription: 'This is the updated job!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -110,8 +110,8 @@ describe('Job API:', function() {
     });
 
     it('should respond with the updated job', function() {
-      updatedJob.name.should.equal('Updated Job');
-      updatedJob.info.should.equal('This is the updated job!!!');
+      updatedJob.jobTitle.should.equal('Updated Job');
+      updatedJob.jobDescription.should.equal('This is the updated job!!!');
     });
 
   });
