@@ -5,10 +5,10 @@ describe('Controller: addJobController', function () {
   // load the controller's module
   beforeEach(module('ulyssesCreatorsApp'));
 
-  var addJobController, scope;
+  var addJobController, scope, $httpBackend, postSuccess = false;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     scope = $rootScope.$new();
     addJobController = $controller('addJobController', {
       $scope: scope
@@ -34,5 +34,31 @@ describe('Controller: addJobController', function () {
            '28','29','30','31','32','33','34','35','36','37','38','39','40','41',
            '42','43','44','45','46','47','48','49','50','51','52','53','54','55',
            '56','57','58','59']);
+  });
+
+  it('should be able to create/upload a new job', function() {
+      addJobController.jobTitle = "Test Job";
+      addJobController.jobDescription = "This is a test!";
+      addJobController.jobLocation = "A Test File";
+
+      addJobController.startTimeHours = "12";
+      addJobController.startTimeMinutes = "0" + 0;
+      addJobController.startTimeAMPM = "AM";
+
+      addJobController.shiftLengthHours = "1";
+      addJobController.shiftLengthMinutes = "0" + 0;
+
+      addJobController.startTimeHours = "12";
+      addJobController.startTimeMinutes = "0" + 0;
+      addJobController.startTimeAMPM = "AM";
+
+      addJobController.trainingOverlapHours = "0";
+      addJobController.trainingOverlapMinutes = "10";
+
+      addJobController.uploadJob();
+
+      expect(addJobController.jobTitle).toEqual('');
+      expect(addJobController.jobDescription).toEqual('');
+      expect(addJobController.jobLocation).toEqual('');
   });
 });

@@ -77,7 +77,7 @@
             startTime: self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM,
             shiftLength: self.shiftLengthHours + self.shiftLengthMinutes,
             trainOverLap: self.trainOverLap
-        })
+        });
 
         self.jobTitle = "";
         self.jobDescription = "";
