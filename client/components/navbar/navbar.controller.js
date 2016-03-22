@@ -14,6 +14,9 @@ class NavbarController {
   },{
     'title': 'Add a Job',
     'state': 'addJob'
+  },{
+    'title': 'Add a Volunteer',
+    'state': 'addvolunteer'
   }
   ];
 
