@@ -9,7 +9,7 @@
 
 
     constructor($http, $scope, socket) {
-      self = this;
+      var self = this;
       self.$http = $http;
 
       }
