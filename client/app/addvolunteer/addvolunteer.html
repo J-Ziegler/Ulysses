@@ -4,13 +4,33 @@
   </div>
 </header>
 </br>
-<form class="thing-form">
-  <label>Syncs in realtime across clients</label>
-  <p class="input-group">
-    <input type="text" class="form-control" placeholder="Volunteer First Name" ng-model="addVolunteer.firstName">
-    <input type="text" class="form-control" placeholder="Volunteer Last Name." ng-model="addVolunteer.lastName">
+
+<div class="container fakeBody">
+  <br>
+  <br>
+  <br>
+
+  <form class="container2">
+    <label>Add a Volunteer</label>
+    <div class="container2">
+      <table>
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Volunteer First Name" ng-model="addVolunteer.firstName"></td>
+          <td><input type="text" class="form-control" placeholder="Volunteer Last Name." ng-model="addVolunteer.lastName"></td>
+          <td><input type="text" class="form-control" placeholder="Email" ng-model="addVolunteer.email"></td>
+          <td><input type="text" class="form-control" placeholder="Association" ng-model="addVolunteer.assoc"></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" placeholder="Phone" ng-model="addVolunteer.phone"></td>
+          <td><input type="text" class="form-control" placeholder="Job Preference 1" ng-model="addVolunteer.jobPreference1"></td>
+          <td><input type="text" class="form-control" placeholder="Job Preference 2" ng-model="addVolunteer.jobPreference2"></td>
+          <td><input type="text" class="form-control" placeholder="Child Team" ng-model="addVolunteer.childTeam"></td>
+        </tr>
+      </table>
+    </div>
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addVolunteer.addVolunteer()">Add New</button>
+        <br />
+        <button type="submit" class="btn btn-primary" ng-click="addVolunteer.addVolunteer()">Add New Volunteer</button>
       </span>
-  </p>
-</form>
+  </form>
+</div>
