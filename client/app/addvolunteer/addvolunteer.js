@@ -6,6 +6,7 @@ angular.module('ulyssesCreatorsApp')
       .state('addvolunteer', {
         url: '/addvolunteer',
         templateUrl: 'app/addvolunteer/addvolunteer.html',
-        controller: 'AddvolunteerCtrl'
+        controller: 'AddvolunteerCtrl',
+        controllerAs: 'addVolunteerCtrl'
       });
   });

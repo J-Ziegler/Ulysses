@@ -4,3 +4,13 @@
   </div>
 </header>
 </br>
+<form class="thing-form">
+  <label>Syncs in realtime across clients</label>
+  <p class="input-group">
+    <input type="text" class="form-control" placeholder="Volunteer First Name" ng-model="volunteerViewCtrl.firstName">
+    <input type="text" class="form-control" placeholder="Volunteer Last Name." ng-model="volunteerViewCtrl.lastName">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addVolunteer.addVolunteer()">Add New</button>
+      </span>
+  </p>
+</form>
