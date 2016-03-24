@@ -6,6 +6,7 @@ angular.module('ulyssesCreatorsApp')
       .state('scheduler', {
         url: '/scheduler',
         templateUrl: 'app/scheduler/scheduler.html',
-        controller: 'SchedulerCtrl'
+        controller: 'SchedulerCtrl',
+        controllerAs: 'scheduler'
       });
   });
