@@ -4,33 +4,253 @@
   </div>
 </header>
 </br>
-
-<div class="container fakeBody">
-  <br>
-  <br>
-  <br>
-
-  <form class="container2">
-    <label>Add a Volunteer</label>
-    <div class="container2">
-      <table>
-        <tr>
-          <td><input type="text" class="form-control" placeholder="Volunteer First Name" ng-model="addVolunteer.firstName"></td>
-          <td><input type="text" class="form-control" placeholder="Volunteer Last Name." ng-model="addVolunteer.lastName"></td>
-          <td><input type="text" class="form-control" placeholder="Email" ng-model="addVolunteer.email"></td>
-          <td><input type="text" class="form-control" placeholder="Association" ng-model="addVolunteer.assoc"></td>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control" placeholder="Phone" ng-model="addVolunteer.phone"></td>
-          <td><input type="text" class="form-control" placeholder="Job Preference 1" ng-model="addVolunteer.jobPreference1"></td>
-          <td><input type="text" class="form-control" placeholder="Job Preference 2" ng-model="addVolunteer.jobPreference2"></td>
-          <td><input type="text" class="form-control" placeholder="Child Team" ng-model="addVolunteer.childTeam"></td>
-        </tr>
-      </table>
-    </div>
-      <span class="input-group-btn">
-        <br />
-        <button type="submit" class="btn btn-primary" ng-click="addVolunteer.addVolunteer()">Add New Volunteer</button>
-      </span>
-  </form>
+<div class="panel panel-default volunteer-create-container">
+  <div class="panel-heading">Personal Details:</div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="firstName" ng-model="addVolunteer.firstName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-3 control-label">Last Name:&nbsp;<label class="control-label2">*</label></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="lastName" ng-model="addVolunteer.lastName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="assoc" class="col-sm-3 control-label">Assoc:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="assoc" ng-model="addVolunteer.assoc">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-sm-3 control-label">E-mail:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="email" ng-model="addVolunteer.email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="col-sm-3 control-label">Phone:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="phone" ng-model="addVolunteer.phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="workPhone" class="col-sm-3 control-label">Work Phone:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="workPhone" ng-model="addVolunteer.workPhone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fax" class="col-sm-3 control-label">Fax:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="fax" ng-model="addVolunteer.fax">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-group">
+          <label for="street1" class="col-sm-2 control-label">Street 1:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="street1" ng-model="addVolunteer.street1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="street2" class="col-sm-2 control-label">Street 2:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="street2" ng-model="addVolunteer.street2">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city" class="col-sm-2 control-label">City:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="city" ng-model="addVolunteer.city">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state" class="col-sm-2 control-label">State:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="state" ng-model="addVolunteer.state">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zip" class="col-sm-2 control-label">ZIP Code:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="zip" ng-model="addVolunteer.zip">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country" class="col-sm-2 control-label">Country:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="country" ng-model="addVolunteer.country">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="region" class="col-sm-2 control-label">Region:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="region" ng-model="addVolunteer.region">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+
+<br /><br />
+
+<div class="panel panel-default volunteer-create-container">
+  <div class="panel-heading">Experience:</div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="assocExp" class="col-sm-3 control-label">Association Experience:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="assocExp" ng-model="addVolunteer.assocExp">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="coachExp" ng-model="addVolunteer.coachExp">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="memberExp" class="col-sm-3 control-label">Member Experience:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="memberExp" ng-model="addVolunteer.memberExp">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="problem" class="col-sm-3 control-label">Problem:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="problem" ng-model="addVolunteer.problem">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="division" class="col-sm-3 control-label">Division:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="division" ng-model="addVolunteer.division">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-group">
+          <label for="jobPreference1" class="col-sm-2 control-label">Job Preference 1:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="jobPreference1" ng-model="addVolunteer.jobPreference1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="jobpreference2" class="col-sm-2 control-label">Job Preference 2:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="jobPreference2" ng-model="addVolunteer.jobPreference2">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="membershipNumber" class="col-sm-2 control-label">Membership Number:</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="membershipNumber" ng-model="addVolunteer.membershipNumber">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="current" class="col-sm-2 control-label">Current Problem:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="current" ng-model="addVolunteer.current">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br /><br />
+
+<div class="panel panel-default volunteer-create-container">
+  <div class="panel-heading">School Information:</div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="mName" class="col-sm-3 control-label">Name of School:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="mName" ng-model="addVolunteer.mName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mRegion" class="col-sm-3 control-label">Region of School:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="mRegion" ng-model="addVolunteer.mRegion">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="childTeam" class="col-sm-3 control-label">Child's Team:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="childTeam" ng-model="addVolunteer.childTeam">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tshirtSize" class="col-sm-3 control-label">T-Shirt Size:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="tshirtSize" ng-model="addVolunteer.tshirtSize">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-group">
+          <label for="coachName" class="col-sm-2 control-label">Coach Name:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="coachName" ng-model="addVolunteer.coachName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="coachEmail" class="col-sm-2 control-label">Coach E-mail:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="coachEmail" ng-model="addVolunteer.coachEmail">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="positionHeld" class="col-sm-2 control-label">Position Held:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="positionHeld" ng-model="addVolunteer.positionHeld">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="isjudge" class="col-sm-2 control-label">Is Judge:</label>
+          <div class="col-sm-10">
+            <input type="checkbox" id="isjudge" value="" ng-model="addVolunteer.isJudge">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br /><br />
+
+<div class="panel panel-default volunteer-create-container">
+  <div class="panel-heading">Comments:</div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="comment" class="col-sm-1 control-label">Comments:</label>
+          <div class="col-sm-11">
+            <textarea class="form-control" rows="5" id="comment" ng-model="addVolunteer.comment"></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br /><br />
+
+<div class="form-group text-center">
+  <button class="btn btn-primary" type="submit" ng-click="addVolunteer.addVolunteer()" name="submit">Add Volunteer</button>
+</div>
+

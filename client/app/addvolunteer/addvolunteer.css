@@ -1,0 +1,30 @@
+.volunteer-container {
+  width: 60%;
+  margin: 0 auto;
+  min-width: 300px;
+}
+
+.volunteer-create-container {
+  width: 70%;
+  margin: 0 auto;
+  min-width: 300px;
+}
+
+
+.filtering {
+  width: 200px;
+}
+.control-label2 {
+  content:"*";
+  color:red;
+}
+
+
+.ctr {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.slot {
+  padding: 8px;
+}
