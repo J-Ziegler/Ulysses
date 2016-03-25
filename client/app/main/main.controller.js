@@ -23,6 +23,11 @@ class MainController {
       socket.unsyncUpdates('thing');
     });
   }
+
+  expandDetails(volunteer){
+  volunteer.show = !volunteer.show;
+  };
+
 }
 
 angular.module('ulyssesCreatorsApp')
