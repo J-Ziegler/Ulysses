@@ -30,8 +30,8 @@
 //deal with job length stuff by randomly breaking up jobs a lot...
     makeJobs() {
       for (var i = 0; i < 100; i++) {
-        var a = parseInt(Math.random() * 100)
-        self.jobs.push({'jobTitle': i, 'start': a, 'end': a + parseInt(Math.random() * 1199 + 1)})
+        var a = parseInt(Math.random() * 1199)
+        self.jobs.push({'jobTitle': i, 'start': a, 'end': a + parseInt(Math.random() * 1199)})
       }
       //person structure {'_id': i,'commitments':[],'preferences':[]}}
       //commitment {'name': i, 'start':n1,'end':n2}
@@ -54,18 +54,16 @@
     }
 
     generateSchedule() {
+      var w = 0;
       for (var j = 0; j < self.jobs.length; j++) {
-        for (var v = 0; v < self.arr.length; v++) {
-          if (self.insertJob(j, v)) {
+        for (var v = 0; v <= self.arr.length; v++) {
+          if (self.insertJob(j, ((v + w) % self.arr.length))) {
+            w = v + 1;
             break;
           }
         }
       }
       console.log(self.arr);
-    }
-
-    getScore(person) {
-
     }
 
     insertJob(j, v) {
@@ -85,7 +83,46 @@
       for (var i = 0; i < self.arr.length; i++) {
         sum += self.arr[i].commitments.length;
       }
-      console.log(sum === self.jobs.length);
+      console.log(sum === self.jobs.length); // Sees if all the jobs are put into people.
+      return self.jobs.length - sum;
+    }
+
+    shuffleArray(arr) {
+      self.print(arr);
+      var temp;
+      var rand;
+      for (var i = 0; i < arr.length; i++) {
+        rand = Math.floor(Math.random() * arr.length);
+        temp = arr[i];
+        arr[i] = arr[rand];
+        arr[rand] = temp;
+        self.print(arr);
+      }
+      return arr;
+    }
+
+    //person structure {'_id': i,'commitments':[],'preferences':[]}}
+    //commitment {'name': i, 'start':n1,'end':n2}
+    //preference {'thing':j,'magnitude':m}
+
+    rateSchedule(schedule) { // schedule is an array, probably maybe.
+      schedule = self.arr;
+      var score = 0;
+      for(var i = 0; i < schedule.length; i++){
+        score = score + self.personMetric(schedule[i]);
+      }
+      score = score + (5 * self.checkAllJobsAssigned());
+      console.log(score);
+    }
+
+
+    personMetric(person){
+      return person.commitments.length * person.commitments.length;
+    }
+
+
+    print(arg){
+      //console.log(arg);
     }
   }
 
