@@ -13,7 +13,7 @@
     <div class="col-lg-12">
       <h1 class="page-header">List of Volunteers: Click on Name to View Details</h1>
       <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers" ng-click = "main.expandDetails(volunteer)">
-        {{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}
+        <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
         <li id = "details" ng-show = "volunteer.show">
           <b>Email: </b> {{volunteer.email}}
           <br>
@@ -100,9 +100,22 @@
         </li>
       </ul>
       <ul class="nav nav-stacked nav-tabs" ng-if="jobChecked" ng-repeat="job in main.jobs" ng-click = "main.expandDetails(job)">
-        {{job.jobTitle}}
-        <li>
-
+        <b>{{job.jobTitle}}</b>
+        <li id = "details2" ng-show = "job.show">
+          <b>Job Title: </b> {{job.jobTitle}}
+          <br>
+          <b>Job Description: </b> {{job.jobDescription}}
+          <br>
+          <b>Job Location: </b> {{job.jobLocation}}
+          <br>
+          <b>End Time: </b> {{job.endTime}}
+          <br>
+          <b>Start Time: </b> {{job.startTime}}
+          <br>
+          <b>Shift Length: </b> {{job.shiftLength}}
+          <br>
+          <b>Training Overlap: </b> {{job.trainOverLap}}
+          <br>
         </li>
       </ul>
     </div>
