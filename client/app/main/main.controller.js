@@ -25,13 +25,13 @@ class MainController {
     });
   }
 
-  expandDetails(volunteer){
+  expandDetails(item){
     if (this.selected === "") {
-      this.selected = volunteer['_id']
+      this.selected = item['_id']
     } else {
       this.selected = "";
     }
-    volunteer.show = !volunteer.show;
+    item.show = !item.show;
   };
 
 

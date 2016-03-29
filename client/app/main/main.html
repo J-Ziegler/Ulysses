@@ -28,7 +28,7 @@
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
         </ul>
       </ul>
-      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in main.jobs" ng-click = "main.expandDetails(job)">
+      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in main.jobs| filter: {_id: main.selected}" ng-click = "main.expandDetails(job)">
         <b>{{job.jobTitle}}</b>
         <ul ng-show = "job.show">
           <b>Job Title: </b> {{job.jobTitle}}
