@@ -8,6 +8,7 @@ class MainController {
     this.$http = $http;
     this.volunteers = [];
     this.jobs = [];
+    this.selected = "";
 
     $http.get('/api/volunteers').then(response => {
       this.volunteers = response.data;
@@ -25,8 +26,15 @@ class MainController {
   }
 
   expandDetails(volunteer){
-  volunteer.show = !volunteer.show;
+    if (this.selected === "") {
+      this.selected = volunteer['_id']
+    } else {
+      this.selected = "";
+    }
+    volunteer.show = !volunteer.show;
   };
+
+
 
 }
 

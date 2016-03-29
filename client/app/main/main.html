@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">List of Volunteers: Click on Name to View Details</h1>
-      <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers" ng-click = "main.expandDetails(volunteer)">
+      <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers | filter: {_id: main.selected}" ng-click = "main.expandDetails(volunteer)">
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
         <li id = "details" ng-show = "volunteer.show">
           <b>Email: </b> {{volunteer.email}}
