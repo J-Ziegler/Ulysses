@@ -11,97 +11,26 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">List of Volunteers: Click on Name to View Details</h1>
-      <ul class="nav nav-stacked nav-tabs" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers | filter: {_id: main.selected}" ng-click = "main.expandDetails(volunteer)">
+      <h1 class="page-header">List of Volunteers:
+      </h1>
+      <br>
+      <h3 ng-hide="main.selected" class="page-header">Click on Name to View Details</h3>
+      <h3 ng-show="main.selected" class="page-header"> Click on Name to Minimize Details</h3>
+      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers | filter: {_id: main.selected}" ng-click = "main.expandDetails(volunteer)">
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
-        <li id = "details" ng-show = "volunteer.show">
+        <ul class="volunteer-block" ng-show = "volunteer.show">
           <b>Email: </b> {{volunteer.email}}
           <br>
-          <b>Assoc: </b> {{volunteer.assoc}}
-          <br>
-          <b>Address: </b> {{volunteer.street1}}
-          <br>
-          <b></b> {{volunteer.street2}}
-          <br>
-          <b>City: </b> {{volunteer.city}}
-          <br>
-          <b>State: </b> {{volunteer.state}}
-          <br>
-          <b>Zip: </b> {{volunteer.zip}}
-          <br>
-          <b>Country: </b> {{volunteer.country}}
-          <br>
-          <b>Region: </b> {{volunteer.region}}
-          <br>
-          <b>Phone: </b> {{volunteer.phone}}
-          <br>
-          <b>Work Phone: </b> {{volunteer.workPhone}}
-          <br>
-          <b>Fax: </b> {{volunteer.fax}}
-          <br>
-          <b>assocExp: </b> {{volunteer.assocExp}}
-          <br>
-          <b>coachExp: </b> {{volunteer.coachExp}}
-          <br>
-          <b>memberExp: </b> {{volunteer.memberExp}}
-          <br>
-          <b>Username: </b> {{volunteer.username}}
-          <br>
-          <b>Password: </b> {{volunteeChandlerr.password}}
-          <br>
-          <b>Current: </b> {{volunteer.current}}
+          <b>Current Schedule: </b>
           <br>
           <b>Job Preference 1: </b> {{volunteer.jobPreference1}}
           <br>
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
-          <br>
-          <b>Membership Number: </b> {{volunteer.membershipNumber}}
-          <br>
-          <b>Problem: </b> {{volunteer.problem}}
-          <br>
-          <b>Division: </b> {{volunteer.division}}
-          <br>
-          <b>Submit Date: </b> {{volunteer.submitDate}}
-          <br>
-          <b>Last Modified: </b> {{volunteer.lastModified}}
-          <br>
-          <b>mName: </b> {{volunteer.mName}}
-          <br>
-          <b>mRegion: </b> {{volunteer.mRegion}}
-          <br>
-          <b>Child Team: </b> {{volunteer.childTeam}}
-          <br>
-          <b>Coach Email: </b> {{volunteer.coachEmail}}
-          <br>
-          <b>Coach Name: </b> {{volunteer.coachName}}
-          <br>
-          <b>T Shirt Size: </b> {{volunteer.tshirtSize}}
-          <br>
-          <b>Position Held: </b> {{volunteer.positionHeld}}
-          <br>
-          <b>comment: </b> {{volunteer.comment}}
-          <br>
-          <b>certP1: </b> {{volunteer.certP1}}
-          <br>
-          <b>certP2: </b> {{volunteer.certP2}}
-          <br>
-          <b>certP3: </b> {{volunteer.certP3}}
-          <br>
-          <b>certP4: </b> {{volunteer.certP4}}
-          <br>
-          <b>certP5: </b> {{volunteer.certP5}}
-          <br>
-          <b>certScore: </b> {{volunteer.certScore}}
-          <br>
-          <b>certSpont: </b> {{volunteer.certSpont}}
-          <br>
-          <b>isJudge: </b> {{volunteer.isJudge}}
-          <br>
-        </li>
+        </ul>
       </ul>
-      <ul class="nav nav-stacked nav-tabs" ng-if="jobChecked" ng-repeat="job in main.jobs" ng-click = "main.expandDetails(job)">
+      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in main.jobs" ng-click = "main.expandDetails(job)">
         <b>{{job.jobTitle}}</b>
-        <li id = "details2" ng-show = "job.show">
+        <ul ng-show = "job.show">
           <b>Job Title: </b> {{job.jobTitle}}
           <br>
           <b>Job Description: </b> {{job.jobDescription}}
@@ -116,7 +45,7 @@
           <br>
           <b>Training Overlap: </b> {{job.trainOverLap}}
           <br>
-        </li>
+        </ul>
       </ul>
     </div>
   </div>

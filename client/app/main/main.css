@@ -25,3 +25,20 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.txt-block {
+  border: 1px solid steelblue;
+  border-radius: 3px;
+  padding: 4px;
+  margin: 6px;
+  display: block;
+  background: white;
+}
+.volunteer-block {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 4px;
+  margin: 6px;
+  display: block;
+  background: white;
+}
