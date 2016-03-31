@@ -61,4 +61,14 @@ describe('Controller: addJobController', function () {
       expect(addJobController.jobDescription).toEqual('');
       expect(addJobController.jobLocation).toEqual('');
   });
+
+  it('testing military time', function() {
+    expect(addJobController.toMilitaryTime("1200AM")).toEqual(0);
+    expect(addJobController.toMilitaryTime("1200PM")).toEqual(1200);
+    expect(addJobController.toMilitaryTime("1000AM")).toEqual(1000);
+    expect(addJobController.toMilitaryTime("1000PM")).toEqual(2200);
+    expect(addJobController.toMilitaryTime("100PM")).toEqual(1300);
+    expect(addJobController.toMilitaryTime("100AM")).toEqual(100);
+  });
+
 });

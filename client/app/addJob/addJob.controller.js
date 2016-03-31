@@ -68,6 +68,19 @@
       return array;
 	}
 
+    toMilitaryTime(str){
+      if(str === "1200AM") {
+        return 0;
+      } else if(str === "1200PM"){
+          return parseInt(str.substring(0,4));
+      } else if(str.substring(str.length - 2, str.length) === "PM"){
+          return parseInt(str.substring(0, str.length - 2)) + 1200;
+      } else if(str.substring(str.length - 2, str.length) === "AM"){
+        return parseInt(str.substring(0,str.length - 2));
+      }
+
+    }
+
     uploadJob() {
         self.$http.post('/api/jobs/', {
             endTime: self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM,
