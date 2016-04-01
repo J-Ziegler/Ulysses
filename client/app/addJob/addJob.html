@@ -6,7 +6,7 @@
 </br>
 
 
-<div class="container">
+<div class="container" ng-show="!showDetails">
       <form ng-submit="addjob.createJob()">
         <div>Job Title:         </br><input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
         <div>Job Description:   </br><textarea ng-model="addjob.jobDescription" placeholder="" rows="4" cols="50"></textarea></div>
@@ -56,6 +56,14 @@
           </select>
         </div>
         </br>
-        <button class="btn btn-primary" ng-click="addjob.uploadJob()">Add Job</button>
+        <button class="btn btn-primary" ng-click="showDetails = ! showDetails">Next</button>
       </form>
+  <div class = "shifts" ng-show="showDetails">
+    <p>testing</p>
+
+  </div>
+</div>
+<div class = "container" ng-show="showDetails">
+  <p>testing</p>
+  <button class="btn btn-primary" ng-click="addJob.uploadJob()">Create Job</button>
 </div>

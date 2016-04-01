@@ -37,6 +37,8 @@
       self.MinutesArray = [];
       self.LengthHoursArray = [];
 
+      self.shifts = [];
+
 
 
     }
@@ -80,6 +82,12 @@
       }
 
     }
+
+    createShifts(t1, t2, shiftLength) {
+
+    }
+
+
 
     uploadJob() {
         self.$http.post('/api/jobs/', {
