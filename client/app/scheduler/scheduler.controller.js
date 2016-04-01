@@ -14,26 +14,42 @@
       self.bestRating = Number.MAX_SAFE_INTEGER;
       //self.jobs = [];
       self.jobs = [];
+      self.shifts = [];
 
       $http.get('/api/volunteers').then(response => {
         this.volunteers = response.data;
-        socket.syncUpdates('volunteer', this.volunteers);
+        socket.syncUpdates('volunteer', self.volunteers);
         $scope.$watch('volunteer', (self.arr = self.makeVolunteers()))
       });
 
-      /*$http.get('/api/jobs').then(response => {
+      $http.get('/api/jobs').then(response => {
        this.jobs = response.data;
-       socket.syncUpdates('job', this.jobs);
-       }); */
+       socket.syncUpdates('job', self.jobs);
+       $scope.$watch('job', (self.shifts = self.jobsToShifts(self.jobs)))
+       });
 
       self.makeJobs();
+    }
+
+    //jobsArray should be the list of jobs pulled from the DB as of this comment.
+    jobsToShifts(jobsArray) {
+      var shiftsArray
+      for (var j = 0; j < jobsArray.length; j++) { // j because we are iterating though jobs
+        for (var s = 0; s < jobsArray[j].shifts.length; s++) {
+          shiftsArray.push({_id: jobsArray[j]._id,
+                            start: jobsArray[j].shifts[s].shiftStart,
+                            end: jobsArray[j].shifts[s].shiftEnd})
+        }
+        console.log(j);
+      }
+      return shiftsArray;
     }
 
 //deal with job length stuff by randomly breaking up jobs a lot...
     makeJobs() {
       for (var i = 0; i < 100; i++) {
         var a = parseInt(Math.random() * 1199)
-        self.jobs.push({'jobTitle': i, 'start': a, 'end': a + parseInt(Math.random() * 1199)})
+        self.jobs.push({'_id': i, 'start': a, 'end': a + parseInt(Math.random() * 1199)})
       }
       //person structure {'_id': i,'commitments':[],'preferences':[]}}
       //commitment {'name': i, 'start':n1,'end':n2}

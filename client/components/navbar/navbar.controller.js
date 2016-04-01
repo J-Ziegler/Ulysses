@@ -18,7 +18,7 @@ class NavbarController {
     'title': 'Add a Volunteer',
     'state': 'addvolunteer'
   },{
-    'title':'SchedulerDebugger',
+    'title':'Scheduler',
     'state':'scheduler'
   }
   ];
