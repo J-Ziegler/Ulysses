@@ -10,6 +10,8 @@
 
       self.volunteers = [];
       self.arr = []; // Placeholder name for the array containing volunteers after we transform them.
+      self.bestSchedule = [];
+      self.bestRating = Number.MAX_SAFE_INTEGER;
       //self.jobs = [];
       self.jobs = [];
 
@@ -48,9 +50,35 @@
       //commitment {'name': i, 'start':n1,'end':n2}
       //preference {'thing':j,'magnitude':m}
 
-      console.log("Volunteers: " + fakeV);
-
       return fakeV;
+    }
+
+    makeSchedules() {
+      var rating = 0;
+      for (var i = 0; i < 1000; i++) {
+        self.generateSchedule();
+        //(rating = self.rateSchedule() &&
+        //console.log(rating));
+        if (self.rateSchedule() < self.bestRating) {
+          self.bestRating = self.rateSchedule();
+          self.bestSchedule = self.arr;
+        //  console.log(self.arr);
+          console.log(self.rateSchedule());
+        }
+        self.clearVolunteerAssignments();
+        self.shuffleArray(self.jobs);
+        self.shuffleArray(self.volunteers);
+      }
+      console.log("----------")
+      console.log(self.bestRating);
+      console.log(self.bestSchedule);
+    }
+
+    // TODO: Fix this.
+    clearVolunteerAssignments() {
+      for(var i = 0; i < self.arr.length; i++) {
+        self.arr[i].commitments = [];
+      }
     }
 
     generateSchedule() {
@@ -63,7 +91,6 @@
           }
         }
       }
-      console.log(self.arr);
     }
 
     insertJob(j, v) {
@@ -83,12 +110,10 @@
       for (var i = 0; i < self.arr.length; i++) {
         sum += self.arr[i].commitments.length;
       }
-      console.log(sum === self.jobs.length); // Sees if all the jobs are put into people.
       return self.jobs.length - sum;
     }
 
     shuffleArray(arr) {
-      self.print(arr);
       var temp;
       var rand;
       for (var i = 0; i < arr.length; i++) {
@@ -96,7 +121,6 @@
         temp = arr[i];
         arr[i] = arr[rand];
         arr[rand] = temp;
-        self.print(arr);
       }
       return arr;
     }
@@ -105,14 +129,16 @@
     //commitment {'name': i, 'start':n1,'end':n2}
     //preference {'thing':j,'magnitude':m}
 
-    rateSchedule(schedule) { // schedule is an array, probably maybe.
-      schedule = self.arr;
+    rateSchedule() { // schedule is an array, probably maybe.
+      var schedule = self.arr;
       var score = 0;
+
       for(var i = 0; i < schedule.length; i++){
         score = score + self.personMetric(schedule[i]);
       }
       score = score + (5 * self.checkAllJobsAssigned());
-      console.log(score);
+      return score;
+      //self.print(score);
     }
 
 
@@ -122,7 +148,7 @@
 
 
     print(arg){
-      //console.log(arg);
+      console.log(arg);
     }
   }
 
