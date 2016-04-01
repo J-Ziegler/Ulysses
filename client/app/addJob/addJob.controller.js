@@ -83,11 +83,11 @@
 
     uploadJob() {
         self.$http.post('/api/jobs/', {
-            endTime: self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM,
+            endTime: self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM),
             jobTitle: self.jobTitle,
             jobDescription: self.jobDescription,
             jobLocation: self.jobLocation,
-            startTime: self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM,
+            startTime: self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM),
             shiftLength: self.shiftLengthHours + self.shiftLengthMinutes,
             trainOverLap: self.trainOverLap
         });

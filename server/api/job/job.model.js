@@ -3,11 +3,11 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var JobSchema = new mongoose.Schema({
-  endTime: String,
+  endTime: Number,
   jobTitle: String,
   jobDescription: String,
   jobLocation: String,
-  startTime: String,
+  startTime: Number,
   shiftLength: String,
   trainOverLap: String
 });
