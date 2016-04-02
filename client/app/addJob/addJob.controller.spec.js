@@ -71,4 +71,25 @@ describe('Controller: addJobController', function () {
     expect(addJobController.toMilitaryTime("100AM")).toEqual(100);
   });
 
+  it('testing calculateFactors', function() {
+    expect(addJobController.calculateFactors(15)).toEqual([1,3,5,15]);
+    expect(addJobController.calculateFactors(0)).toEqual([]);
+    expect(addJobController.calculateFactors(13)).toEqual([1,13]);
+    expect(addJobController.calculateFactors(1)).toEqual([1]);
+  })
+  it('testing creating calculateFactorsArray', function() {
+
+    addJobController.startTimeHours = "12";
+    addJobController.startTimeMinutes = "0" + 0;
+    addJobController.startTimeAMPM = "PM";
+
+    addJobController.endTimeHours = "4";
+    addJobController.endTimeMinutes = "0" + 0;
+    addJobController.endTimeAMPM = "PM";
+
+    expect(addJobController.makeShiftsFactorsArray()).toEqual([1,2,4,5,8,10,16,20,25,40,50,80,100,200,400])
+
+
+  });
+
 });

@@ -23,9 +23,9 @@
       self.startTimeMinutes = "0" + 0;
       self.startTimeAMPM = "AM";
 
-      self.endTimeHours = "12";
+      self.endTimeHours = "7";
       self.endTimeMinutes = "0" + 0;
-      self.endTimeAMPM = "AM";
+      self.endTimeAMPM = "PM";
 
       self.shiftLengthHours = "1";
       self.shiftLengthMinutes = "0" + 0;
@@ -69,6 +69,9 @@
       }
       return array;
 	}
+    makeShiftsFactorsArray(){
+      return self.calculateFactors((self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM))-(self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM)));
+    }
 
     toMilitaryTime(str){
       if(str === "1200AM") {
@@ -83,9 +86,28 @@
 
     }
 
-    createShifts(t1, t2, shiftLength) {
+    calculateFactors(n)
+    {
+      var num_factors = [], i;
 
+      for (i = 1; i <= Math.floor(Math.sqrt(n)); i += 1)
+        if (n % i === 0)
+        {
+          num_factors.push(i.toString());
+          if (n / i !== i)
+            num_factors.push((n / i).toString());
+        }
+      num_factors.sort(function(x, y)
+      {
+        return x - y;});  // numeric sort
+      return num_factors;
     }
+    /*makeShiftsArray(shiftStart, shiftEnd, shiftLength) {
+      array[];
+      var numShifts = Math.round((shiftEnd-shiftStart)/shiftLength);
+
+
+    }*/
 
 
 

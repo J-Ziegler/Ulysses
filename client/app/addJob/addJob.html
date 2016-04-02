@@ -5,65 +5,66 @@
 </header>
 </br>
 
+<form ng-submit="showDetails = !showDetails">
+  <div class="container" ng-show="!showDetails">
+    <div>Job Title:         </br><input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
+    <div>Job Description:   </br><textarea ng-model="addjob.jobDescription" placeholder="" rows="4" cols="50"></textarea></div>
+    <div>Job Location:      </br><input ng-model="addjob.jobLocation" type="text" placeholder=""></div>
+    <div>Start Time:
+      </br>
+      <select ng-model="addjob.startTimeHours">
+        <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
+      </select>:
+      <select ng-model="addjob.startTimeMinutes">
+        <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
+      </select>
+      <select ng-model="addjob.startTimeAMPM">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div>
+    <div>End Time:
+      </br>
+      <select ng-model="addjob.endTimeHours">
+        <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
+      </select>:
+      <select ng-model="addjob.endTimeMinutes">
+        <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
+      </select>
+      <select ng-model="addjob.endTimeAMPM">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div>
 
-<div class="container" ng-show="!showDetails">
-      <form ng-submit="addjob.createJob()">
-        <div>Job Title:         </br><input ng-model="addjob.jobTitle" type="text" placeholder=""></div>
-        <div>Job Description:   </br><textarea ng-model="addjob.jobDescription" placeholder="" rows="4" cols="50"></textarea></div>
-        <div>Job Location:      </br><input ng-model="addjob.jobLocation" type="text" placeholder=""></div>
-        <div>Start Time:
-          </br>
-          <select ng-model="addjob.startTimeHours">
-            <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
-          </select>:
-          <select ng-model="addjob.startTimeMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
-          </select>
-          <select ng-model="addjob.startTimeAMPM">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
-        </div>
-        <div>Shift Length:
-          </br>
-          <select ng-model="addjob.shiftLengthHours">
-            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.LengthHoursArray)" value = {{thing}} >{{thing}}</option>
-          </select>:
-          <select ng-model="addjob.shiftLengthMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
-          </select>
-        </div>
-        <div>End Time:
-          </br>
-          <select ng-model="addjob.endTimeHours">
-            <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
-          </select>:
-          <select ng-model="addjob.endTimeMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
-          </select>
-          <select ng-model="addjob.endTimeAMPM">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
-        </div>
-        <div>Training Overlap:
-          </br>
-          <select ng-model="addjob.trainingOverlapHours">
-            <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.LengthHoursArray)" value = {{thing}} >{{thing}}</option>
-          </select>:
-          <select ng-model="addjob.trainingOverlapMinutes">
-            <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
-          </select>
-        </div>
-        </br>
-        <button class="btn btn-primary" ng-click="showDetails = ! showDetails">Next</button>
-      </form>
-  <div class = "shifts" ng-show="showDetails">
-    <p>testing</p>
+    <div>Shift Length:
+      </br>
+      <select ng-model="addjob.shiftLengthHours">
+        <option ng-repeat="thing in addjob.makeShiftsFactorsArray()" value = {{thing}} >{{thing}}</option>
+      </select>:
+      <!-- <select ng-model="addjob.shiftLengthMinutes">
+         <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
+       </select>-->
+    </div>
 
+    <div>Training Overlap:
+      </br>
+      <select ng-model="addjob.trainingOverlapHours">
+        <option ng-repeat="thing in addjob.makeLengthHourArray(addjob.LengthHoursArray)" value = {{thing}} >{{thing}}</option>
+      </select>:
+      <select ng-model="addjob.trainingOverlapMinutes">
+        <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
+      </select>
+    </div>
+    </br>
+    <button class="btn btn-primary">Next</button>
   </div>
-</div>
-<div class = "container" ng-show="showDetails">
-  <p>testing</p>
-  <button class="btn btn-primary" ng-click="addJob.uploadJob()">Create Job</button>
-</div>
+
+  <div class = "container" ng-show="showDetails">
+    <button class="btn btn-primary" ng-click=addjob.uploadJob()>Create Job</button>
+  </div>
+
+
+</form>
+
+
