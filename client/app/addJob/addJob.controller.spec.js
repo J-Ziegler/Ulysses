@@ -72,10 +72,10 @@ describe('Controller: addJobController', function () {
   });
 
   it('testing calculateFactors', function() {
-    expect(addJobController.calculateFactors(15)).toEqual([1,3,5,15]);
+    expect(addJobController.calculateFactors(15)).toEqual(["1","3","5","15"]);
     expect(addJobController.calculateFactors(0)).toEqual([]);
-    expect(addJobController.calculateFactors(13)).toEqual([1,13]);
-    expect(addJobController.calculateFactors(1)).toEqual([1]);
+    expect(addJobController.calculateFactors(13)).toEqual(["1","13"]);
+    expect(addJobController.calculateFactors(1)).toEqual(["1"]);
   })
   it('testing creating calculateFactorsArray', function() {
 
@@ -87,8 +87,14 @@ describe('Controller: addJobController', function () {
     addJobController.endTimeMinutes = "0" + 0;
     addJobController.endTimeAMPM = "PM";
 
-    expect(addJobController.makeShiftsFactorsArray()).toEqual([1,2,4,5,8,10,16,20,25,40,50,80,100,200,400])
+    expect(addJobController.makeShiftsFactorsArray()).toEqual(["1","2","4","5","8","10","16","20","25","40","50","80","100","200","400"])
 
+
+  });
+  it('testing fixshiftLength', function() {
+    expect(addJobController.fixshiftLength("290")).toEqual(330);
+    expect(addJobController.fixshiftLength("90")).toEqual(130);
+    expect(addJobController.fixshiftLength("59")).toEqual(59);
 
   });
 

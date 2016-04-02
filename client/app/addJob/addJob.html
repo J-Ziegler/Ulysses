@@ -40,7 +40,7 @@
     <div>Shift Length:
       </br>
       <select ng-model="addjob.shiftLengthHours">
-        <option ng-repeat="thing in addjob.makeShiftsFactorsArray()" value = {{thing}} >{{thing}}</option>
+        <option ng-repeat="thing in addjob.makeShiftsFactorsArray() | orderBy: thing" value = {{thing}} >{{thing}}</option>
       </select>:
       <!-- <select ng-model="addjob.shiftLengthMinutes">
          <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>

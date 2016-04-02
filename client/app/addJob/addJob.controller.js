@@ -69,8 +69,15 @@
       }
       return array;
 	}
+
     makeShiftsFactorsArray(){
-      return self.calculateFactors((self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM))-(self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM)));
+      var tempshiftlengthsArray = self.calculateFactors((self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM))-(self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM)));
+      var temp = [];
+      for(var i =0 ; i < tempshiftlengthsArray.length; i++){
+
+      temp.push(self.fixshiftLength(tempshiftlengthsArray[i]));
+    }
+      return temp;
     }
 
     toMilitaryTime(str){
@@ -108,6 +115,14 @@
 
 
     }*/
+    fixshiftLength(str){
+      if(str.length >= 2 && parseInt(str.substring(str.length -2,str.length)) > 59){
+        var shiftLength = parseInt(str);
+        shiftLength = shiftLength + 40;
+        return shiftLength;
+      }
+      return parseInt(str);
+    }
 
 
 
