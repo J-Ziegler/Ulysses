@@ -45,6 +45,15 @@
           <br>
           <b>Training Overlap: </b> {{job.trainOverLap}}
           <br>
+          <b>Shifts: </b>
+          <ul ng-repeat="shift in job.shifts">
+          <li>
+            {{shift.start}}
+            {{shift.end}}
+            {{shift.numberofVolunteers}}
+          </li>
+        </ul>
+          <br>
         </ul>
       </ul>
     </div>

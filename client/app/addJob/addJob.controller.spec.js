@@ -63,6 +63,7 @@ describe('Controller: addJobController', function () {
   });
 
   it('testing military time', function() {
+
     expect(addJobController.toMilitaryTime("1200AM")).toEqual(0);
     expect(addJobController.toMilitaryTime("1200PM")).toEqual(1200);
     expect(addJobController.toMilitaryTime("1000AM")).toEqual(1000);
@@ -76,6 +77,8 @@ describe('Controller: addJobController', function () {
     expect(addJobController.calculateFactors(0)).toEqual([]);
     expect(addJobController.calculateFactors(13)).toEqual(["1","13"]);
     expect(addJobController.calculateFactors(1)).toEqual(["1"]);
+    expect(addJobController.calculateFactors(1200)).toEqual(["1","2","3","4","5","6","8","10","12","15","16","20","24","25","30","40","48","50","60","75","80","100","120","150","200","240","300","400","600","1200"]);
+
   })
   it('testing makeShiftsFactorsArray', function() {
 
@@ -95,6 +98,7 @@ describe('Controller: addJobController', function () {
     expect(addJobController.fixshiftLength("290")).toEqual("330");
     expect(addJobController.fixshiftLength("90")).toEqual("130");
     expect(addJobController.fixshiftLength("59")).toEqual("59");
+    expect(addJobController.fixshiftLength("300")).toEqual("300");
 
   });
   it('testing numberofShifts', function() {

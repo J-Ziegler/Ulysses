@@ -57,14 +57,24 @@
       </select>
     </div>
     </br>
-    <button class="btn btn-primary">Next</button>
+    <button class="btn btn-primary" ng-click="addjob.createshiftsArray()">Next</button>
   </div>
 
   <div class = "container" ng-show="showDetails">
+    <ul class="list-group" ng-repeat="shift in addjob.shifts">
+      <li class="list-group-item">
+        {{shift.start}}
+        {{shift.end}}
+        <select ng-model = "shift.numberofVolunteers">
+          <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
+        </select>
+      </li>
+    </ul>
     <button class="btn btn-primary" ng-click=addjob.uploadJob()>Create Job</button>
   </div>
 
 
 </form>
+{{addjob.shifts.length}}
 
 

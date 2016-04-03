@@ -23,7 +23,7 @@
       self.startTimeMinutes = "0" + 0;
       self.startTimeAMPM = "AM";
 
-      self.endTimeHours = "7";
+      self.endTimeHours = "12";
       self.endTimeMinutes = "0" + 0;
       self.endTimeAMPM = "PM";
 
@@ -37,17 +37,11 @@
       self.MinutesArray = [];
       self.LengthHoursArray = [];
 
-      self.shifts = self.makeShifts();
+      self.shifts = [];
 
     }
 
-    makeShifts(){
-      var arr = [];
-      for (var i = 0;i<self.numberofVolunteers;i++){
-        arr.push({'_id':"todo",'start':self.shiftStart,'end':self.shiftEnd})
-      }
-      return arr;
-    }
+
 
     makeHourArray(array){
       array=[];
@@ -82,9 +76,8 @@
       var tempshiftlengthsArray = self.calculateFactors(mendTime-mstartTime);
       var temp = [];
       for(var i =0 ; i < tempshiftlengthsArray.length; i++){
-
-      temp.push(self.fixshiftLength(tempshiftlengthsArray[i]));
-    }
+        temp.push(self.fixshiftLength(tempshiftlengthsArray[i]));
+      }
       return temp;
     }
 
@@ -131,15 +124,18 @@
       }
       return str;
     }
+
     createshiftsArray(){
       var mendTime = self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM);
       var mstartTime = self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM);
       var shiftsArray = [];
       for(var i= 0; i < self.numberofShifts(); i++){
-        shiftsArray.push({'_id':self.jobTitle,'shiftStart' :mstartTime +(self.shiftLengthHours * i),'shiftEnd': mstartTime +(self.shiftLengthHours * i)+ parseInt(self.shiftLengthHours),'numberofVolunteers':0})
+        self.shifts.push({'_id':self.jobTitle,'start' :mstartTime +(self.shiftLengthHours * i),'end': mstartTime +(self.shiftLengthHours * i)+ parseInt(self.shiftLengthHours),'numberofVolunteers':0})
       }
-      self.shifts.push(shiftsArray);
-      return shiftsArray;
+     // self.shifts.push(shiftsArray);
+      console.log("Got here" + self.shifts);
+      console.log(self.shifts[0]);
+      return self.shifts;
 
 
   }
@@ -154,7 +150,8 @@
             jobLocation: self.jobLocation,
             startTime: self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM),
             shiftLength: self.shiftLengthHours + self.shiftLengthMinutes,
-            trainOverLap: self.trainOverLap
+            trainOverLap: self.trainOverLap,
+            shifts: self.shifts
         });
 
         self.jobTitle = "";
@@ -171,12 +168,13 @@
         self.shiftLengthHours = "1";
         self.shiftLengthMinutes = "0" + 0;
 
-        self.startTimeHours = "12";
-        self.startTimeMinutes = "0" + 0;
-        self.startTimeAMPM = "AM";
+        self.endTimeHours = "12";
+        self.endTimeMinutes = "0" + 0;
+        self.endTimeAMPM = "PM";
 
         self.trainingOverlapHours = "0";
         self.trainingOverlapMinutes = "10";
+        self.shifts = [];
     }
 
   }
