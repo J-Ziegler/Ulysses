@@ -77,7 +77,7 @@ describe('Controller: addJobController', function () {
     expect(addJobController.calculateFactors(13)).toEqual(["1","13"]);
     expect(addJobController.calculateFactors(1)).toEqual(["1"]);
   })
-  it('testing creating calculateFactorsArray', function() {
+  it('testing makeShiftsFactorsArray', function() {
 
     addJobController.startTimeHours = "12";
     addJobController.startTimeMinutes = "0" + 0;
@@ -87,15 +87,41 @@ describe('Controller: addJobController', function () {
     addJobController.endTimeMinutes = "0" + 0;
     addJobController.endTimeAMPM = "PM";
 
-    expect(addJobController.makeShiftsFactorsArray()).toEqual(["1","2","4","5","8","10","16","20","25","40","50","80","100","200","400"])
+    expect(addJobController.makeShiftsFactorsArray()).toEqual(["1","2","4","5","8","10","16","20","25","40","50","120","100","200","400"])
 
 
   });
   it('testing fixshiftLength', function() {
-    expect(addJobController.fixshiftLength("290")).toEqual(330);
-    expect(addJobController.fixshiftLength("90")).toEqual(130);
-    expect(addJobController.fixshiftLength("59")).toEqual(59);
+    expect(addJobController.fixshiftLength("290")).toEqual("330");
+    expect(addJobController.fixshiftLength("90")).toEqual("130");
+    expect(addJobController.fixshiftLength("59")).toEqual("59");
 
   });
+  it('testing numberofShifts', function() {
+    addJobController.startTimeHours = "12";
+    addJobController.startTimeMinutes = "0" + 0;
+    addJobController.startTimeAMPM = "PM";
+
+    addJobController.endTimeHours = "4";
+    addJobController.endTimeMinutes = "0" + 0;
+    addJobController.endTimeAMPM = "PM";
+    addJobController.shiftLengthHours = "100"
+    expect(addJobController.numberofShifts()).toEqual(4);
+
+  });
+  it('testing createshiftsArray', function() {
+    addJobController.jobTitle = "Food Service"
+    addJobController.startTimeHours = "12";
+    addJobController.startTimeMinutes = "0" + 0;
+    addJobController.startTimeAMPM = "PM";
+
+    addJobController.endTimeHours = "4";
+    addJobController.endTimeMinutes = "0" + 0;
+    addJobController.endTimeAMPM = "PM";
+    addJobController.shiftLengthHours = "100"
+    expect(addJobController.createshiftsArray()).toEqual([{ _id: 'Food Service', shiftStart: 1200, shiftEnd: 1300, numberofVolunteers: 0 }, { _id: 'Food Service', shiftStart: 1300, shiftEnd: 1400, numberofVolunteers: 0 }, { _id: 'Food Service', shiftStart: 1400, shiftEnd: 1500, numberofVolunteers: 0 },{ _id: 'Food Service', shiftStart: 1500, shiftEnd: 1600, numberofVolunteers: 0 }]);
+
+  });
+
 
 });

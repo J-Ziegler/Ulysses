@@ -37,10 +37,16 @@
       self.MinutesArray = [];
       self.LengthHoursArray = [];
 
-      self.shifts = [];
+      self.shifts = self.makeShifts();
 
+    }
 
-
+    makeShifts(){
+      var arr = [];
+      for (var i = 0;i<self.numberofVolunteers;i++){
+        arr.push({'_id':"todo",'start':self.shiftStart,'end':self.shiftEnd})
+      }
+      return arr;
     }
 
     makeHourArray(array){
@@ -71,7 +77,9 @@
 	}
 
     makeShiftsFactorsArray(){
-      var tempshiftlengthsArray = self.calculateFactors((self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM))-(self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM)));
+      var mendTime = self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM);
+      var mstartTime = self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM);
+      var tempshiftlengthsArray = self.calculateFactors(mendTime-mstartTime);
       var temp = [];
       for(var i =0 ; i < tempshiftlengthsArray.length; i++){
 
@@ -92,6 +100,11 @@
       }
 
     }
+    numberofShifts(){
+      var mendTime = self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM);
+      var mstartTime = self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM);
+      return (mendTime - mstartTime)/self.shiftLengthHours;
+    }
 
     calculateFactors(n)
     {
@@ -109,20 +122,27 @@
         return x - y;});  // numeric sort
       return num_factors;
     }
-    /*makeShiftsArray(shiftStart, shiftEnd, shiftLength) {
-      array[];
-      var numShifts = Math.round((shiftEnd-shiftStart)/shiftLength);
 
-
-    }*/
     fixshiftLength(str){
       if(str.length >= 2 && parseInt(str.substring(str.length -2,str.length)) > 59){
         var shiftLength = parseInt(str);
         shiftLength = shiftLength + 40;
-        return shiftLength;
+        return shiftLength.toString();
       }
-      return parseInt(str);
+      return str;
     }
+    createshiftsArray(){
+      var mendTime = self.toMilitaryTime(self.endTimeHours + self.endTimeMinutes + self.endTimeAMPM);
+      var mstartTime = self.toMilitaryTime(self.startTimeHours + self.startTimeMinutes + self.startTimeAMPM);
+      var shiftsArray = [];
+      for(var i= 0; i < self.numberofShifts(); i++){
+        shiftsArray.push({'_id':self.jobTitle,'shiftStart' :mstartTime +(self.shiftLengthHours * i),'shiftEnd': mstartTime +(self.shiftLengthHours * i)+ parseInt(self.shiftLengthHours),'numberofVolunteers':0})
+      }
+      self.shifts.push(shiftsArray);
+      return shiftsArray;
+
+
+  }
 
 
 

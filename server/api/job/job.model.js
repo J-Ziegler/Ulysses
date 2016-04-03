@@ -9,7 +9,8 @@ var JobSchema = new mongoose.Schema({
   jobLocation: String,
   startTime: Number,
   shiftLength: String,
-  trainOverLap: String
+  trainOverLap: String,
+  shifts: Array
 });
 
 export default mongoose.model('Job', JobSchema);
