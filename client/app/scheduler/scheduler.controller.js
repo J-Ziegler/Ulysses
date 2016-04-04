@@ -17,23 +17,25 @@
       self.shifts = [];
 
       $http.get('/api/volunteers').then(response => {
-        this.volunteers = response.data;
+        self.volunteers = response.data;
         socket.syncUpdates('volunteer', self.volunteers);
         $scope.$watch('volunteer', (self.arr = self.makeVolunteers()))
       });
 
+      /*
       $http.get('/api/jobs').then(response => {
        this.jobs = response.data;
        socket.syncUpdates('job', self.jobs);
        $scope.$watch('job', (self.shifts = self.jobsToShifts(self.jobs)))
        });
+       */
 
       self.makeJobs();
     }
 
     //jobsArray should be the list of jobs pulled from the DB as of this comment.
     jobsToShifts(jobsArray) {
-      var shiftsArray
+      var shiftsArray = [];
       for (var j = 0; j < jobsArray.length; j++) { // j because we are iterating though jobs
         for (var s = 0; s < jobsArray[j].shifts.length; s++) {
           shiftsArray.push({_id: jobsArray[j]._id,
@@ -47,7 +49,7 @@
 
 //deal with job length stuff by randomly breaking up jobs a lot...
     makeJobs() {
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 425; i++) {
         var a = parseInt(Math.random() * 1199)
         self.jobs.push({'_id': i, 'start': a, 'end': a + parseInt(Math.random() * 1199)})
       }
@@ -58,7 +60,7 @@
 
     makeVolunteers() {
       var fakeV = []; // Array of fake volunteers
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < self.volunteers.length; i++) {
         var a = parseInt(Math.random() * 100)
         fakeV.push({_id: self.volunteers[i]._id, commitments: [], preferences: []});
       }
@@ -72,25 +74,25 @@
     makeSchedules() {
       var rating = 0;
       for (var i = 0; i < 1000; i++) {
+        self.clearVolunteerAssignments();
         self.generateSchedule();
         //(rating = self.rateSchedule() &&
         //console.log(rating));
         if (self.rateSchedule() < self.bestRating) {
           self.bestRating = self.rateSchedule();
           self.bestSchedule = self.arr;
-        //  console.log(self.arr);
           console.log(self.rateSchedule());
         }
-        self.clearVolunteerAssignments();
         self.shuffleArray(self.jobs);
         self.shuffleArray(self.volunteers);
       }
       console.log("----------")
       console.log(self.bestRating);
       console.log(self.bestSchedule);
+      console.log("Number of unassigned jobs: " + self.checkAllJobsAssigned());
     }
 
-    // TODO: Fix this.
+    // TODO: Fix this. It shouldn't delete all the things, just most of them.
     clearVolunteerAssignments() {
       for(var i = 0; i < self.arr.length; i++) {
         self.arr[i].commitments = [];

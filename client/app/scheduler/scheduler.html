@@ -9,6 +9,8 @@
                                                  scheduler.arr = scheduler.shuffleArray(scheduler.makeVolunteers())">GenerRate</button>
 <button class='btn btn-primary btn-sm' ng-click="scheduler.makeSchedules()">Make lots of schedules</button>
 
-<br>
 
-{{scheduler.bestRating}}
+<br>
+<h1>Number of Unassigned Jobs: {{scheduler.checkAllJobsAssigned()}}</h1>
+
+<br>
