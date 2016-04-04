@@ -90,6 +90,7 @@
       console.log(self.bestRating);
       console.log(self.bestSchedule);
       console.log("Number of unassigned jobs: " + self.checkAllJobsAssigned());
+      self.$http.post('/api/schedules/', {schedule: self.bestSchedule, rating: self.bestRating});
     }
 
     // TODO: Fix this. It shouldn't delete all the things, just most of them.

@@ -3,9 +3,8 @@
 import mongoose from 'mongoose';
 
 var ScheduleSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  schedule: Array,
+  rating: Number
 });
 
 export default mongoose.model('Schedule', ScheduleSchema);
