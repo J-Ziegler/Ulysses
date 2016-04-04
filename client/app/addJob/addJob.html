@@ -1,3 +1,4 @@
+
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Add a New Job</h1>
@@ -40,7 +41,7 @@
     <div>Shift Length:
       </br>
       <select ng-model="addjob.shiftLengthHours">
-        <option ng-repeat="thing in addjob.makeShiftsFactorsArray() | orderBy: thing" value = {{thing}} >{{thing}}</option>
+        <option ng-repeat="thing in addjob.makeShiftsFactorsArray() track by $index|orderBy: thing" value = {{thing}} >{{thing}}</option>
       </select>:
       <!-- <select ng-model="addjob.shiftLengthMinutes">
          <option ng-repeat="thing in addjob.makeMinuteArray(addjob.MinutesArray)" value = {{thing}} >{{thing}}</option>
@@ -63,8 +64,8 @@
   <div class = "container" ng-show="showDetails">
     <ul class="list-group" ng-repeat="shift in addjob.shifts">
       <li class="list-group-item">
-        {{shift.start}}
-        {{shift.end}}
+        {{shift.start}} - {{shift.end}} <br>
+        Number of Volunteers
         <select ng-model = "shift.numberofVolunteers">
           <option ng-repeat="thing in addjob.makeHourArray(addjob.startTimeHoursArray)" value = {{thing}} >{{thing}}</option>
         </select>
@@ -75,6 +76,6 @@
 
 
 </form>
-{{addjob.shifts.length}}
+
 
 
