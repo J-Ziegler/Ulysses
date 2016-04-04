@@ -26,6 +26,13 @@
           <b>Job Preference 1: </b> {{volunteer.jobPreference1}}
           <br>
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
+          <br>
+          <b>Schedule:</b>
+          <ul ng-repeat="commitment in main.getVolunteerSchedule(volunteer._id)">
+            <li>
+              {{commitment.start}} - {{commitment.end}}
+            </li>
+          </ul>
         </ul>
       </ul>
       <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in main.jobs| filter: {_id: main.selected}" ng-click = "main.expandDetails(job)">
@@ -37,9 +44,9 @@
           <br>
           <b>Job Location: </b> {{job.jobLocation}}
           <br>
-          <b>End Time: </b> {{job.endTime}}
-          <br>
           <b>Start Time: </b> {{job.startTime}}
+          <br>
+          <b>End Time: </b> {{job.endTime}}
           <br>
           <b>Shift Length: </b> {{job.shiftLength}}
           <br>
@@ -48,9 +55,7 @@
           <b>Shifts: </b>
           <ul ng-repeat="shift in job.shifts">
           <li>
-            {{shift.start}}
-            {{shift.end}}
-            {{shift.numberofVolunteers}}
+            {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
           </li>
         </ul>
           <br>

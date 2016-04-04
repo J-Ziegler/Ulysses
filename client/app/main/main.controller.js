@@ -8,6 +8,7 @@ class MainController {
     this.$http = $http;
     this.volunteers = [];
     this.jobs = [];
+    this.schedules = [];
     this.selected = "";
 
     $http.get('/api/volunteers').then(response => {
@@ -20,8 +21,9 @@ class MainController {
       socket.syncUpdates('job', this.jobs);
     });
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
+    $http.get('/api/schedules').then(response => {
+      this.schedules = response.data;
+      socket.syncUpdates('schedule', this.schedules);
     });
   }
 
@@ -33,6 +35,16 @@ class MainController {
     }
     item.show = !item.show;
   };
+
+  getVolunteerSchedule(id) {
+    console.log(this.schedules[0].schedule);
+    //console.log(this.schedules.rating);
+    for (var i = 0; i < this.schedules[0].schedule.length; i++) {
+      if(this.schedules[0].schedule[i]._id === id) {
+        return this.schedules[0].schedule[i].commitments;
+      }
+    }
+  }
 
 
 
