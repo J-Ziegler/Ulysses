@@ -20,6 +20,9 @@ class NavbarController {
   },{
     'title':'Scheduler',
     'state':'scheduler'
+  },{
+    'title':'Volunteer View',
+    'state':'volunteerView'
   }
   ];
 

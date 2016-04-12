@@ -1,1 +1,67 @@
-<div>This is the volunteerView view.</div>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Ulysses</h1>
+  </div>
+</header>
+
+<div class="container">
+
+  <label>Show Volunteers: <input type="checkbox" ng-model="volunteerChecked" ng-init="volunteerChecked=true" /></label>
+  <label>Show Jobs: <input type="checkbox" ng-model="jobChecked" ng-init="jobChecked=false" /></label>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">List of Volunteers:
+      </h1>
+      <br>
+      <h3 ng-hide="volunteerView.selected" class="page-header">Click on Name to View Details</h3>
+      <h3 ng-show="volunteerView.selected" class="page-header"> Click on Name to Minimize Details</h3>
+      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" ng-click = "showdetails=!showdetails">
+        <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
+        <ul class="volunteer-block" ng-show = "showdetails">
+          <b>Email: </b> {{volunteer.email}}
+          <br>
+          <b>Current Schedule: </b>
+          <br>
+          <b>Job Preference 1: </b> {{volunteer.jobPreference1}}
+          <br>
+          <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
+          <br>
+          <b>Schedule:</b>
+          <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id)">
+            <li>
+              {{commitment.start}} - {{commitment.end}}
+            </li>
+          </ul>
+        </ul>
+      </ul>
+      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in volunteerView.jobs| filter: {_id: volunteerView.selected}" ng-click = "volunteerView.expandDetails(job)">
+        <b>{{job.jobTitle}}</b>
+        <ul ng-show = "job.show">
+          <b>Job Title: </b> {{job.jobTitle}}
+          <br>
+          <b>Job Description: </b> {{job.jobDescription}}
+          <br>
+          <b>Job Location: </b> {{job.jobLocation}}
+          <br>
+          <b>Start Time: </b> {{job.startTime}}
+          <br>
+          <b>End Time: </b> {{job.endTime}}
+          <br>
+          <b>Shift Length: </b> {{job.shiftLength}}
+          <br>
+          <b>Training Overlap: </b> {{job.trainOverLap}}
+          <br>
+          <b>Shifts: </b>
+          <ul ng-repeat="shift in job.shifts">
+            <li>
+              {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
+            </li>
+          </ul>
+          <br>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</div>
+

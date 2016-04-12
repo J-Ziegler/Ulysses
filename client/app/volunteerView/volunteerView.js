@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('ulyssesCreatorsApp')
-  .config(function ($stateProvider) {
+  .config(function($stateProvider) {
     $stateProvider
       .state('volunteerView', {
         url: '/volunteerView',
-        template: '<volunteer-view></volunteer-view>'
+        templateUrl: 'app/volunteerView/volunteerView.html',
+        controller: 'volunteerViewController',
+        controllerAs: 'volunteerView'
       });
   });
