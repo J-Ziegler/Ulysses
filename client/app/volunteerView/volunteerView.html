@@ -6,17 +6,17 @@
 
 <div class="container">
 
-    <label>Show Volunteers: <input type="checkbox" ng-model="volunteerChecked" ng-init="volunteerChecked=true" /></label>
-    <label>Show Jobs: <input type="checkbox" ng-model="jobChecked" ng-init="jobChecked=false" /></label>
+  <label>Show Volunteers: <input type="checkbox" ng-model="volunteerChecked" ng-init="volunteerChecked=true" /></label>
+  <label>Show Jobs: <input type="checkbox" ng-model="jobChecked" ng-init="jobChecked=false" /></label>
 
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">List of Volunteers:
       </h1>
       <br>
-      <h3 ng-hide="main.selected" class="page-header">Click on Name to View Details</h3>
-      <h3 ng-show="main.selected" class="page-header"> Click on Name to Minimize Details</h3>
-      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in main.volunteers | filter: {_id: main.selected}" ng-click = "showdetails=!showdetails">
+      <h3 ng-hide="volunteerView.selected" class="page-header">Click on Name to View Details</h3>
+      <h3 ng-show="volunteerView.selected" class="page-header"> Click on Name to Minimize Details</h3>
+      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" ng-click = "showdetails=!showdetails">
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
         <ul class="volunteer-block" ng-show = "showdetails">
           <b>Email: </b> {{volunteer.email}}
@@ -28,14 +28,14 @@
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
           <br>
           <b>Schedule:</b>
-          <ul ng-repeat="commitment in main.getVolunteerSchedule(volunteer._id)">
+          <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id)">
             <li>
               {{commitment.start}} - {{commitment.end}}
             </li>
           </ul>
         </ul>
       </ul>
-      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in main.jobs| filter: {_id: main.selected}" ng-click = "main.expandDetails(job)">
+      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in volunteerView.jobs| filter: {_id: volunteerView.selected}" ng-click = "volunteerView.expandDetails(job)">
         <b>{{job.jobTitle}}</b>
         <ul ng-show = "job.show">
           <b>Job Title: </b> {{job.jobTitle}}
@@ -54,10 +54,10 @@
           <br>
           <b>Shifts: </b>
           <ul ng-repeat="shift in job.shifts">
-          <li>
-            {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
-          </li>
-        </ul>
+            <li>
+              {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
+            </li>
+          </ul>
           <br>
         </ul>
       </ul>
