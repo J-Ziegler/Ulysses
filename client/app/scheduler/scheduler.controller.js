@@ -12,9 +12,7 @@
       self.arr = []; // Placeholder name for the array containing volunteers after we transform them.
       self.bestSchedule = [];
       self.bestRating = Number.MAX_SAFE_INTEGER;
-      //self.jobs = [];
       self.jobs = [];
-      self.shifts = [];
 
       $http.get('/api/volunteers').then(response => {
         self.volunteers = response.data;
@@ -32,6 +30,7 @@
 
       self.makeJobs();
     }
+
 
     //jobsArray should be the list of jobs pulled from the DB as of this comment.
     jobsToShifts(jobsArray) {
