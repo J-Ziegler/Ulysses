@@ -16,8 +16,8 @@
       </h1>
       <h3 ng-hide="volunteerView.selected" class="page-header">Click on Name to View Details</h3>
       <h3 ng-show="volunteerView.selected" class="page-header"> Click on Name to Minimize Details</h3>
-      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" ng-click = "showdetails=!showdetails">
-        <ul ng-click="volunteerViewController.expandDetails(volunteer)"  class="btn btn-sm"><span class="glyphicon glyphicon-wrench" ></span></ul>
+      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" >
+        <ul ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open" ></span></ul>
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
         <ul class="volunteer-block" ng-show = "showdetails">
          <!-- <div align="right"> -->
@@ -38,7 +38,7 @@
             </li>
           </ul>
           <div align="right">
-          <ul ng-click="volunteerViewController.deleteVolunteer(volunteer)"  class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-fire" ></span></ul>
+          <ul ng-click="volunteerViewController.deleteVolunteer(volunteer)"  class="btn btn-sm"><span class="glyphicon glyphicon-fire" style="color:red"></span></ul>
           </div>
         </ul>
       </ul>
