@@ -26,7 +26,7 @@
         socket.syncUpdates('schedule', this.schedules);
       });
     }
-    
+
     deleteVolunteer(volunteer){
       if(confirm("Are you sure that you want to delte volunteer?")) {
         console.log("You have deleted this volunteer...with fire");
@@ -46,7 +46,7 @@
 
 
     getVolunteerSchedule(id) {
-      console.log(this.schedules[0].schedule);
+      //console.log(this.schedules[0].schedule);
       //console.log(this.schedules.rating);
       for (var i = 0; i < this.schedules[0].schedule.length; i++) {
         if (this.schedules[0].schedule[i]._id === id) {
