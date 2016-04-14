@@ -26,6 +26,23 @@
         socket.syncUpdates('schedule', this.schedules);
       });
     }
+    
+    deleteVolunteer(volunteer){
+      if(confirm("Are you sure that you want to delte volunteer?")) {
+        console.log("You have deleted this volunteer...with fire");
+      } else {
+        console.log("you have allowed this volunteer to live");
+      }
+    }
+
+    expandDetails(item){
+      if (this.selected === "") {
+        this.selected = item['_id']
+      } else {
+        this.selected = "";
+      }
+      item.show = !item.show;
+    };
 
 
     getVolunteerSchedule(id) {
