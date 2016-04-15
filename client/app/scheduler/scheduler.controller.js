@@ -13,6 +13,7 @@
       self.bestSchedule = [];
       self.bestRating = Number.MAX_SAFE_INTEGER;
       self.jobs = [];
+      self.volunteer = [];
 
       $http.get('/api/volunteers').then(response => {
         self.volunteers = response.data;
@@ -29,6 +30,16 @@
        */
 
       self.makeJobs();
+    }
+
+    //volunteerById: a way to get our volunteers by ID to display their information in the full view
+    volunteerById(id) {
+      for (var i = 0; i < self.volunteers.length; i++) {
+        if (id == self.volunteers[i]._id){
+        return self.volunteers[i];
+      }
+      }
+
     }
 
 
