@@ -34,6 +34,10 @@
         console.log("you have allowed this volunteer to live");
       }
     }
+    
+    editVolunteer(volunteer){
+      
+    }
 
     expandDetails(item){
       if (this.selected === "") {
