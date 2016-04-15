@@ -35,9 +35,15 @@
         console.log("you have allowed this volunteer to live");
       }
     }
-
+    
+    //this function just makes the editing stuff appear or disappear
     editVolunteer(volunteer){
       this.editMode = !this.editMode
+    }
+
+    saveEdits(volunteer){
+      this.editVolunteer(volunteer)
+      //this is where we'll put all the actual editing stuff.
     }
 
     expandDetails(item){
