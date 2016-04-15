@@ -37,6 +37,9 @@
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
           <br>
           <ul ng-show="volunteerView.editMode">
+
+            <h4>Personal Details:</h4>
+            <p></p>
             <div class="form-group">
               <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
               <div class="col-sm-9">
@@ -50,11 +53,80 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="assoc" class="col-sm-3 control-label">Association:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="assoc" value = {{volunteer.assoc}}>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="email" class="col-sm-3 control-label">Email:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="email" value = {{volunteer.email}}>
               </div>
             </div>
+            <div class="form-group">
+              <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="phone" value = {{volunteer.phone}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="workphone" class="col-sm-3 control-label">Workphone Number:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="workphone" value = {{volunteer.workphone}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fax" class="col-sm-3 control-label">Fax:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="fax" value = {{volunteer.fax}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="street1" class="col-sm-3 control-label">Street 1:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="street1" value = {{volunteer.street1}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="street2" class="col-sm-3 control-label">Street 2:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="street2" value = {{volunteer.street2}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="city" class="col-sm-3 control-label">City:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="city" value = {{volunteer.city}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="state" class="col-sm-3 control-label">State:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="state" value = {{volunteer.state}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="zip" value = {{volunteer.zip}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country" class="col-sm-3 control-label">Country:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="country" value = {{volunteer.country}}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="region" class="col-sm-3 control-label">Region:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="region" value = {{volunteer.region}}>
+              </div>
+            </div>
+
+            <h4>Experience:</h4>
+            <p></p>
             <div class="form-group">
               <label for="division" class="col-sm-3 control-label">Division:</label>
               <div class="col-sm-9">
@@ -121,21 +193,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="region" class="col-sm-3 control-label">Region:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="region" value = {{volunteer.region}}>
-              </div>
-            </div>
-            <div class="form-group">
               <label for="tShirt" class="col-sm-3 control-label">T-shirt Size:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="tShirt" value = {{volunteer.tShirt}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="assoc" class="col-sm-3 control-label">Association:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="assoc" value = {{volunteer.assoc}}>
               </div>
             </div>
             <div class="form-group">
@@ -151,12 +211,6 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="city" class="col-sm-3 control-label">City:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="city" value = {{volunteer.city}}>
-              </div>
-            </div>
-            <div class="form-group">
               <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
               <div class="col-sm-9">
                 <input type="number" class="form-control" id="coachExp" value = {{volunteer.coachExp}}>
@@ -166,22 +220,17 @@
             <div class="col-sm-9">
               <input type="text" class="form-control" id="comment" value = {{volunteer.comment}}>
             </div>
-          </div><div class="form-group">
-            <label for="country" class="col-sm-3 control-label">Country:</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="country" value = {{volunteer.country}}>
-            </div>
           </div>
+              <div class="form-group">
+              <label for="fax" class="col-sm-3 control-label">Fax:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="fax" value = {{volunteer.fax}}>
+              </div>
+            </div>
             <div class="form-group">
               <label for="current" class="col-sm-3 control-label">Current:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="current" value = {{volunteer.current}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="fax" class="col-sm-3 control-label">Fax:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="fax" value = {{volunteer.fax}}>
               </div>
             </div>
             <div class="form-group">
@@ -203,33 +252,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="phone" value = {{volunteer.phone}}>
-              </div>
-            </div>
-            <div class="form-group">
               <label for="positionsHeld" class="col-sm-3 control-label">Positions Held:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="positionsHeld" value = {{volunteer.positionsHeld}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="state" class="col-sm-3 control-label">State:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="state" value = {{volunteer.state}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="street1" class="col-sm-3 control-label">Street 1:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="street1" value = {{volunteer.street1}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="street2" class="col-sm-3 control-label">Street 2:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="street2" value = {{volunteer.street2}}>
               </div>
             </div>
             <div class="form-group">
@@ -242,18 +267,6 @@
               <label for="username" class="col-sm-3 control-label">Username:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="username" value = {{volunteer.username}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="workphone" class="col-sm-3 control-label">Workphone Number:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="workphone" value = {{volunteer.workphone}}>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="zip" value = {{volunteer.zip}}>
               </div>
             </div>
           </div>
