@@ -10,6 +10,7 @@
       this.jobs = [];
       this.schedules = [];
       this.selected = "";
+      this.editMode = false;
 
       $http.get('/api/volunteers').then(response => {
         this.volunteers = response.data;
@@ -34,9 +35,9 @@
         console.log("you have allowed this volunteer to live");
       }
     }
-    
+
     editVolunteer(volunteer){
-      
+      this.editMode = !this.editMode
     }
 
     expandDetails(item){

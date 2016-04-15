@@ -24,6 +24,7 @@
            <!-- <a align="right" ng-click="" ng-show="true" ng-href="/volunteers/schedule/{{volunteer._id}}"  class="btn btn-sm btn-success group-item-calendar align-right"><span class="glyphicon glyphicon-list"></span></a> -->
           <!--</div>-->
           <div class="pull-right">
+            <ul ng-show = "volunteerView.editMode" ng-click=""  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save" style="color:green"></span></ul>
             <ul ng-click="volunteerView.editVolunteer(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-wrench" style="color:green"></span></ul>
             <ul ng-click="volunteerView.deleteVolunteer(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-fire" style="color:red"></span></ul>
           </div>
@@ -35,7 +36,7 @@
           <br>
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
           <br>
-          <ul ng-show="true">
+          <ul ng-show="volunteerView.editMode">
             <div class="form-group">
               <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
               <div class="col-sm-9">
@@ -256,9 +257,9 @@
               </div>
             </div>
           </div>
-            <div class="pull-right">
+          <!--  <div class="pull-right">
               <ul ng-click=""  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save" style="color:green"></span></ul>
-          </div>
+          </div> -->
           </ul>
 
           <b>Schedule:</b>
