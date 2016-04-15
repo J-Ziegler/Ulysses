@@ -12,8 +12,10 @@
   This is a list of everyone's name <br> -->
   <!-- {{ scheduler.volunteers }} -->
   <div ng-repeat="job in scheduler.bestSchedule">
-    try this {{job._id}}
+    try this {{scheduler.volunteerById(job._id).firstName}}
   </div>
+
+
 </div>
 
 <br>
