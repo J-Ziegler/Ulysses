@@ -12,7 +12,7 @@
   This is a list of everyone's name <br> -->
   <!-- {{ scheduler.volunteers }} -->
   <div ng-repeat="job in scheduler.bestSchedule">
-    try this {{scheduler.volunteerById(job._id).firstName}}
+    {{scheduler.volunteerById(job._id).firstName}} {{scheduler.volunteerById(job._id).lastName}} works at {{job.commitments}}
   </div>
 
 
