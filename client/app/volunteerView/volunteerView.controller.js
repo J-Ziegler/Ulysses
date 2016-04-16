@@ -30,7 +30,7 @@
     }
 
     deleteVolunteer(volunteer){
-      if(confirm("Are you sure that you want to delete volunteer?")) {
+      if(confirm("Are you sure that you want to delete " + volunteer.firstName + "?")) {
         console.log("Deleting " + volunteer.firstName + " " + volunteer.lastName);
         self.removeFromDatabase(volunteer._id);
       } else {
@@ -39,7 +39,7 @@
     }
 
     removeFromDatabase(id) {
-        self.$http.delete('/api/volunteers' + id);
+        self.$http.delete('/api/volunteers/' + id);
     }
 
     //this function just makes the editing stuff appear or disappear
@@ -63,6 +63,7 @@
 
 
     getVolunteerSchedule(id) {
+        return [];
       //console.log(this.schedules[0].schedule);
       //console.log(this.schedules.rating);
       for (var i = 0; i < this.schedules[0].schedule.length; i++) {

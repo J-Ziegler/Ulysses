@@ -18,7 +18,7 @@
       <h3 ng-show="volunteerView.selected" class="page-header"> Click on Name to Minimize Details</h3>
       <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" >
         <ul ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open" ></span></ul>
-        <b>{{ volunteer.firstName }} {{ volunteer.lastName }} {{volunteer.assoc}}</b>
+        <b>{{ volunteer.firstName }} {{ volunteer.lastName }}</b>
         <ul class="volunteer-block" ng-show = "showdetails">
          <!-- <div align="right"> -->
            <!-- <a align="right" ng-click="" ng-show="true" ng-href="/volunteers/schedule/{{volunteer._id}}"  class="btn btn-sm btn-success group-item-calendar align-right"><span class="glyphicon glyphicon-list"></span></a> -->
