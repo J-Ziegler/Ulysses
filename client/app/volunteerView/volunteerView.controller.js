@@ -12,6 +12,47 @@
       this.schedules = [];
       this.selected = "";
       this.editMode = false;
+      //below are our editing things
+      this.firstName = "";
+      this.lastName = "";
+      this.assoc = "";
+      this.email = "";
+      this.phone = "";
+      this.workPhone = "";
+      this.fax = "";
+      this.street1 = "";
+      this.street2 = "";
+      this.city = "";
+      this.state = "";
+      this.zip = "";
+      this.country = "";
+      this.region = "";
+      this.division = "";
+      this.coachName = "";
+      this.coachEmail = "";
+      this.jobPreference1 = "";
+      this.jobPreference2 = "";
+      this.trainingAt = "";
+      this.lunchPreference = "";
+      this.membershipName = "";
+      this.membershipRegion = "";
+      this.membershipNumber = "";
+      this.problem = "";
+      this.tShirt = "";
+      this.assocExp = "";
+      this.childTeam = "";
+      this.coachExp = "";
+      this.comment = "";
+      this.current = "";
+      this.jobComment = "";
+      this.memberExp = "";
+      this.modifyOn = "";
+      this.positionsHeld = "";
+      this.submitDate = "";
+      this.username = "";
+
+
+
 
       $http.get('/api/volunteers').then(response => {
         this.volunteers = response.data;

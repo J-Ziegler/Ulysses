@@ -8,17 +8,16 @@
 <div class="container">
   <br>
   <div class="row">
-    <p class="col-lg-12">
-      <ul class="txt-block" ng-repeat="volunteer in volunteerView.volunteers | orderBy: 'lastName'">
-        <ul ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open"></span></ul>
+    <div class="col-lg-12">
+      <ul class="txt-block" ng-repeat="volunteer in volunteerView.volunteers | orderBy: 'lastName' | filter: {_id: volunteerView.selected}">
+        <div ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open"></span></div>
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }}</b>
         <ul class="volunteer-block" ng-show="showdetails">
           <!-- <div align="right"> -->
           <!-- <a align="right" ng-click="" ng-show="true" ng-href="/volunteers/schedule/{{volunteer._id}}"  class="btn btn-sm btn-success group-item-calendar align-right"><span class="glyphicon glyphicon-list"></span></a> -->
           <!--</div>-->
           <div class="pull-right">
-            <ul ng-show = "volunteerView.editMode" ng-click="volunteerView.saveEdits(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save" style="color:green"></span></ul>
-            <ul ng-hide = "volunteerView.editMode" ng-click="volunteerView.editVolunteer(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-wrench" style="color:green"></span></ul>
+            <ul ng-hide = "volunteerView.editMode" ng-click="volunteerView.editVolunteer(volunteer._id)"  class="btn btn-default"><span class="glyphicon glyphicon-wrench" style="color:green"></span></ul>
             <ul ng-click="volunteerView.deleteVolunteer(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-fire" style="color:red"></span></ul>
           </div>
           <b>Email: </b> {{volunteer.email}}
@@ -29,253 +28,247 @@
           <br>
           <b>Job Preference 2: </b> {{volunteer.jobPreference2}}
           <br>
-          <ul ng-show="volunteerView.editMode">
-
-            <h4>Personal Details:</h4>
-            <div class="form-group">
-              <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="firstName" value="{{volunteer.firstName}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="lastName" class="col-sm-3 control-label">Last Name:&nbsp;<label class="control-label2">*</label></label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="lastName" value="{{volunteer.lastName}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="assoc" class="col-sm-3 control-label">Association:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="assoc" value="{{volunteer.assoc}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email" class="col-sm-3 control-label">Email:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="email" value="{{volunteer.email}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="phone" value="{{volunteer.phone}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="workphone" class="col-sm-3 control-label">Workphone Number:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="workphone" value="{{volunteer.workphone}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="fax" class="col-sm-3 control-label">Fax:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="fax" value="{{volunteer.fax}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="street1" class="col-sm-3 control-label">Street 1:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="street1" value="{{volunteer.street1}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="street2" class="col-sm-3 control-label">Street 2:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="street2" value="{{volunteer.street2}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="city" class="col-sm-3 control-label">City:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="city" value="{{volunteer.city}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="state" class="col-sm-3 control-label">State:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="state" value="{{volunteer.state}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="zip" value="{{volunteer.zip}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="country" class="col-sm-3 control-label">Country:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="country" value="{{volunteer.country}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="region" class="col-sm-3 control-label">Region:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="region" value="{{volunteer.region}}">
-              </div>
-            </div>
-
-            <h4>Experience:</h4>
-            <div class="form-group">
-              <label for="division" class="col-sm-3 control-label">Division:</label>
-              <div class="col-sm-9">
-                <input type="number" class="form-control" id="division" value="{{volunteer.division}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="coachName" class="col-sm-3 control-label">Coach Name:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="coachName" value="{{volunteer.coachName}}">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="coachEmail" class="col-sm-3 control-label">Coach Email:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="coachEmail" value="{{volunteer.coachEmail}}">
-              </div>
-              <div class="form-group">
-                <label for="jobPreference1" class="col-sm-3 control-label">Job Preference 1:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="jobPreference1" value="{{volunteer.jobPreference1}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="jobPreference2" class="col-sm-3 control-label">Job Prefernce 2:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="jobPreference2" value="{{volunteer.jobPreference2}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="trainingAt" class="col-sm-3 control-label">Training At:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="trainingAt" value="{{volunteer.trainingAt}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="lunchPreference" class="col-sm-3 control-label">Lunch Preference:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="lunchPreference" value="{{volunteer.lunchPreference}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="membershipName" class="col-sm-3 control-label">Memebership Name:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="membershipName" value="{{volunteer.membershipName}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="membershipRegion" class="col-sm-3 control-label">Membership Region:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="membershipRegion" value="{{volunteer.membershipRegion}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="membershipNumber" class="col-sm-3 control-label">Membership Number:</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="membershipNumber" value="{{volunteer.membershipNumber}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="problem" class="col-sm-3 control-label">Problem:</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="problem" value="{{volunteer.problem}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="tShirt" class="col-sm-3 control-label">T-shirt Size:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="tShirt" value="{{volunteer.tShirt}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="assocExp" class="col-sm-3 control-label">assocExp:</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="assocExp" value="{{volunteer.assocExp}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="childTeam" class="col-sm-3 control-label">Children's Team:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="childTeam" value="{{volunteer.childTeam}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="coachExp" value="{{volunteer.coachExp}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="comment" class="col-sm-3 control-label">Comment:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="comment" value="{{volunteer.comment}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="fax" class="col-sm-3 control-label">Fax:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="fax" value="{{volunteer.fax}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="current" class="col-sm-3 control-label">Current:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="current" value="{{volunteer.current}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="jobComment" class="col-sm-3 control-label">Job Comment:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="jobComment" value="{{volunteer.jobComment}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="memberExp" class="col-sm-3 control-label">Member Experience:</label>
-                <div class="col-sm-9">
-                  <input type="number" class="form-control" id="memberExp" value="{{volunteer.memberExp}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="modifyOn" class="col-sm-3 control-label">Modified On:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="modifyOn" value="{{volunteer.modifyOn}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="positionsHeld" class="col-sm-3 control-label">Positions Held:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="positionsHeld" value="{{volunteer.positionsHeld}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="submitDate" class="col-sm-3 control-label">Submission Date:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="submitDate" value="{{volunteer.submitDate}}">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="username" class="col-sm-3 control-label">Username:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="username" value="{{volunteer.username}}">
-                </div>
-              </div>
-            </div>
-            <!--  <div class="pull-right">
-                <ul ng-click=""  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save" style="color:green"></span></ul>
-            </div> -->
-          </ul>
 
           <b>Schedule:</b>
           <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id)">
             <li>
-    <p>{{volunteerView.getJobById(commitment._id).jobTitle}}: {{commitment.start}} - {{commitment.end}}</p>
-    </li>
-    </ul> <!-- End schedule -->
-    </ul> <!-- End volunteer block -->
-    </ul> <!-- End volunteer list -->
+              <p>{{volunteerView.getJobById(commitment._id).jobTitle}}: {{commitment.start}} - {{commitment.end}}</p>
+            </li>
+          </ul> <!-- End schedule -->
+        </ul> <!-- End volunteer block -->
+      </ul> <!-- End volunteer list -->
+    </div>
+  </div>
+  <div ng-show="volunteerView.editMode" class="row">
+    <h4>Personal Details:</h4>
+    <br>
+    <div class="form-group">
+      <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="firstName" value="{{volunteerView.firstName}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName" class="col-sm-3 control-label">Last Name:&nbsp;<label class="control-label2">*</label></label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="lastName" value="{{volunteerView.lastName}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="assoc" class="col-sm-3 control-label">Association:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="assoc" value="{{volunteerView.assoc}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-3 control-label">Email:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="email" value="{{volunteerView.email}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="phone" value="{{volunteerView.phone}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="workPhone" class="col-sm-3 control-label">Work Phone Number:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="workPhone" value="{{volunteerView.workPhone}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fax" class="col-sm-3 control-label">Fax:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="fax" value="{{volunteerView.fax}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="street1" class="col-sm-3 control-label">Street 1:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="street1" value="{{volunteerView.street1}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="street2" class="col-sm-3 control-label">Street 2:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="street2" value="{{volunteerView.street2}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="city" class="col-sm-3 control-label">City:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="city" value="{{volunteerView.city}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="state" class="col-sm-3 control-label">State:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="state" value="{{volunteerView.state}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="zip" value="{{volunteerView.zip}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="country" class="col-sm-3 control-label">Country:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="country" value="{{volunteerView.country}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="region" class="col-sm-3 control-label">Region:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="region" value="{{volunteerView.region}}">
+      </div>
+    </div>
+
+    <h4>Experience:</h4>
+    <div class="form-group">
+      <label for="division" class="col-sm-3 control-label">Division:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="division" value="{{volunteerView.division}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="coachName" class="col-sm-3 control-label">Coach Name:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="coachName" value="{{volunteerView.coachName}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="coachEmail" class="col-sm-3 control-label">Coach Email:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="coachEmail" value="{{volunteerView.coachEmail}}">
+      </div>
+      <div class="form-group">
+        <label for="jobPreference1" class="col-sm-3 control-label">Job Preference 1:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="jobPreference1" value="{{volunteerView.jobPreference1}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jobPreference2" class="col-sm-3 control-label">Job Prefernce 2:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="jobPreference2" value="{{volunteerView.jobPreference2}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="trainingAt" class="col-sm-3 control-label">Training At:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="trainingAt" value="{{volunteerView.trainingAt}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lunchPreference" class="col-sm-3 control-label">Lunch Preference:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="lunchPreference" value="{{volunteerView.lunchPreference}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="membershipName" class="col-sm-3 control-label">Memebership Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="membershipName" value="{{volunteerView.membershipName}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="membershipRegion" class="col-sm-3 control-label">Membership Region:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="membershipRegion" value="{{volunteerView.membershipRegion}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="membershipNumber" class="col-sm-3 control-label">Membership Number:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="membershipNumber" value="{{volunteerView.membershipNumber}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="problem" class="col-sm-3 control-label">Problem:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="problem" value="{{volunteerView.problem}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tShirt" class="col-sm-3 control-label">T-shirt Size:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="tShirt" value="{{volunteerView.tShirt}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="assocExp" class="col-sm-3 control-label">assocExp:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="assocExp" value="{{volunteerView.assocExp}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="childTeam" class="col-sm-3 control-label">Children's Team:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="childTeam" value="{{volunteerView.childTeam}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="coachExp" value="{{volunteerView.coachExp}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comment" class="col-sm-3 control-label">Comment:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="comment" value="{{volunteerView.comment}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="current" class="col-sm-3 control-label">Current:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="current" value="{{volunteerView.current}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jobComment" class="col-sm-3 control-label">Job Comment:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="jobComment" value="{{volunteerView.jobComment}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="memberExp" class="col-sm-3 control-label">Member Experience:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="memberExp" value="{{volunteerView.memberExp}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="modifyOn" class="col-sm-3 control-label">Modified On:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="modifyOn" value="{{volunteerView.modifyOn}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="positionsHeld" class="col-sm-3 control-label">Positions Held:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="positionsHeld" value="{{volunteerView.positionsHeld}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="submitDate" class="col-sm-3 control-label">Submission Date:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="submitDate" value="{{volunteerView.submitDate}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">Username:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="username" value="{{volunteerView.username}}">
+        </div>
+      </div>
+      <div class="pull-right">
+        <br>
+        <div ng-show = "volunteerView.editMode" ng-click="volunteerView.saveEdits()"  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save pull-right" style="color:green"></span></div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-<!-- </div> -->
