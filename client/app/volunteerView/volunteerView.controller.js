@@ -15,16 +15,19 @@
 
       $http.get('/api/volunteers').then(response => {
         this.volunteers = response.data;
+        console.log("Volunteers loaded.");
         socket.syncUpdates('volunteer', this.volunteers);
       });
 
       $http.get('/api/jobs').then(response => {
         this.jobs = response.data;
+        console.log("Jobs loaded.");
         socket.syncUpdates('job', this.jobs);
       });
 
       $http.get('/api/schedules').then(response => {
         this.schedules = response.data;
+        console.log("Schedule loaded.");
         socket.syncUpdates('schedule', this.schedules);
       });
     }
@@ -80,7 +83,6 @@
 
 
     getVolunteerSchedule(id) {
-        return [];
       //console.log(this.schedules[0].schedule);
       //console.log(this.schedules.rating);
       for (var i = 0; i < this.schedules[0].schedule.length; i++) {
@@ -89,6 +91,7 @@
         }
       }
     }
+
   }
 
   angular.module('ulyssesCreatorsApp')
