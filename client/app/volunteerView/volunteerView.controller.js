@@ -63,8 +63,9 @@
     }
 
     //this function just makes the editing stuff appear or disappear
-    editVolunteer(volunteer){
-      this.editMode = !this.editMode
+    editVolunteer(id){
+      self.selected = id;
+      self.editMode = true;
     }
 
     saveEdits(volunteer){
