@@ -31,14 +31,31 @@
 
     deleteVolunteer(volunteer){
       if(confirm("Are you sure that you want to delete " + volunteer.firstName + "?")) {
-        console.log("Deleting " + volunteer.firstName + " " + volunteer.lastName);
-        self.removeFromDatabase(volunteer._id);
+        console.log("Deleting " + volunteer.firstName + " " + volunteer.lastName + "...");
+        self.removeJobsOfVolunteer(volunteer._id);
+        self.removeFromVolunteers(volunteer._id);
       } else {
         console.log("The volunteer has not been deleted.");
       }
     }
 
-    removeFromDatabase(id) {
+    removeJobsOfVolunteer(id) {
+        console.log("Removing " + id + " from the schedule...");
+        var s = self.schedules[0].schedule
+        for (var i = 0; i < s.length; i++) {
+            if (s[i]._id === id) {
+                Array.splice(i, 1);
+
+                self.$http.put('/api/schedules/' + self.schedules._id, {
+                    schedule: s,
+                    rating: self.schedules[0].rating;
+                });
+            }
+        }
+    }
+
+    removeFromVolunteers(id) {
+        console.log("Removing " + id + " from the volunteer database...");
         self.$http.delete('/api/volunteers/' + id);
     }
 
