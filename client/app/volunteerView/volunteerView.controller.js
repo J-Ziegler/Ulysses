@@ -5,6 +5,7 @@
 
 
     constructor($http, $scope, socket) {
+      self = this;
       this.$http = $http;
       this.volunteers = [];
       this.jobs = [];
@@ -29,13 +30,18 @@
     }
 
     deleteVolunteer(volunteer){
-      if(confirm("Are you sure that you want to delte volunteer?")) {
-        console.log("You have deleted this volunteer...with fire");
+      if(confirm("Are you sure that you want to delete volunteer?")) {
+        console.log("Deleting " + volunteer.firstName + " " + volunteer.lastName);
+        self.removeFromDatabase(volunteer._id);
       } else {
-        console.log("you have allowed this volunteer to live");
+        console.log("The volunteer has not been deleted.");
       }
     }
-    
+
+    removeFromDatabase(id) {
+        self.$http.delete('/api/volunteers' + id);
+    }
+
     //this function just makes the editing stuff appear or disappear
     editVolunteer(volunteer){
       this.editMode = !this.editMode
