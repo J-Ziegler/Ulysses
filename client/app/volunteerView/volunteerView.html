@@ -1,22 +1,16 @@
 <!-- <div ng-show="nav.hasRole('volunteer')"> -->
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Ulysses</h1>
+    <h1>Volunteers</h1>
   </div>
 </header>
 
 <div class="container">
-
-  <label>Show Volunteers: <input type="checkbox" ng-model="volunteerChecked" ng-init="volunteerChecked=true" /></label>
-  <label>Show Jobs: <input type="checkbox" ng-model="jobChecked" ng-init="jobChecked=false" /></label>
-
   <div class="row">
     <p class="col-lg-12">
-      <h1 class="page-header">List of Volunteers:
-      </h1>
       <h3 ng-hide="volunteerView.selected" class="page-header">Click on Name to View Details</h3>
       <h3 ng-show="volunteerView.selected" class="page-header"> Click on Name to Minimize Details</h3>
-      <ul class="txt-block" ng-if="volunteerChecked" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" >
+      <ul class="txt-block" ng-repeat="volunteer in volunteerView.volunteers | filter: {_id: volunteerView.selected}" >
         <ul ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open" ></span></ul>
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }}</b>
         <ul class="volunteer-block" ng-show = "showdetails">
@@ -281,32 +275,6 @@
               <p>{{commitment.jobTitle}}: {{commitment.start}} - {{commitment.end}}</p>
             </li>
           </ul>
-        </ul>
-      </ul>
-      <ul class="txt-block" ng-if="jobChecked" ng-repeat="job in volunteerView.jobs| filter: {_id: volunteerView.selected}" ng-click = "volunteerView.expandDetails(job)">
-        <b>{{job.jobTitle}}</b>
-        <ul ng-show = "job.show">
-          <b>Job Title: </b> {{job.jobTitle}}
-          <br>
-          <b>Job Description: </b> {{job.jobDescription}}
-          <br>
-          <b>Job Location: </b> {{job.jobLocation}}
-          <br>
-          <b>Start Time: </b> {{job.startTime}}
-          <br>
-          <b>End Time: </b> {{job.endTime}}
-          <br>
-          <b>Shift Length: </b> {{job.shiftLength}}
-          <br>
-          <b>Training Overlap: </b> {{job.trainOverLap}}
-          <br>
-          <b>Shifts: </b>
-          <ul ng-repeat="shift in job.shifts">
-            <li>
-              {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
-            </li>
-          </ul>
-          <br>
         </ul>
       </ul>
     </div>
