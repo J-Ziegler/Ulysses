@@ -6,13 +6,13 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 // This data model DOES NOT include some fields from the original data.
 // Excluded fields commented below.
 var VolunteerSchema = new mongoose.Schema({
-  '': String,
   coachEmail: String,
   coachName: String,
   division: Number,
   email: String,
   firstName: String,
   trainingAt: String,
+  isJudge: Boolean,
   jobPreference1: String,
   jobPreference2: String,
   lastName: String,
