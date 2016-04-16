@@ -35,8 +35,8 @@ describe('Schedule API:', function() {
       request(app)
         .post('/api/schedules')
         .send({
-          name: 'New Schedule',
-          info: 'This is the brand new schedule!!!'
+          schedule: [1,2,3,4,5],
+          rating: 9001
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -50,8 +50,8 @@ describe('Schedule API:', function() {
     });
 
     it('should respond with the newly created schedule', function() {
-      newSchedule.name.should.equal('New Schedule');
-      newSchedule.info.should.equal('This is the brand new schedule!!!');
+      newSchedule.schedule[0].should.equal(1);
+      newSchedule.rating.should.equal(9001);
     });
 
   });
@@ -78,8 +78,8 @@ describe('Schedule API:', function() {
     });
 
     it('should respond with the requested schedule', function() {
-      schedule.name.should.equal('New Schedule');
-      schedule.info.should.equal('This is the brand new schedule!!!');
+      newSchedule.schedule[0].should.equal(1);
+      schedule.rating.should.equal(9001);
     });
 
   });
@@ -91,8 +91,8 @@ describe('Schedule API:', function() {
       request(app)
         .put('/api/schedules/' + newSchedule._id)
         .send({
-          name: 'Updated Schedule',
-          info: 'This is the updated schedule!!!'
+          schedule: [1,2,3,4,5,6],
+          rating: 0
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -110,8 +110,8 @@ describe('Schedule API:', function() {
     });
 
     it('should respond with the updated schedule', function() {
-      updatedSchedule.name.should.equal('Updated Schedule');
-      updatedSchedule.info.should.equal('This is the updated schedule!!!');
+      newSchedule.schedule[0].should.equal(1);
+      updatedSchedule.rating.should.equal(0);
     });
 
   });
