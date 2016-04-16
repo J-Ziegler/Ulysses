@@ -1,21 +1,15 @@
-
-<div><!-- ng-show="nav.hasRole('admin')"> -->This is the scheduler view. It is VERY VERY VERY WIP</div>
 <button class='btn btn-primary btn-sm' ng-click="scheduler.makeSchedules()">Make lots of schedules</button>
-
-
 <br>
 <h1>Number of Unassigned Jobs: {{scheduler.checkAllJobsAssigned()}}</h1>
 
 <div>
-  This is where we are putting the schedule. {{ scheduler.bestSchedule }} <br> <br>
-<!--  These are all of the jobs. {{ scheduler.jobs }} <br> <br>
-  This is a list of everyone's name <br> -->
-  <!-- {{ scheduler.volunteers }} -->
-  <div ng-repeat="job in scheduler.bestSchedule">
-    {{scheduler.volunteerById(job._id).firstName}} {{scheduler.volunteerById(job._id).lastName}} works at {{job.commitments}}
-  </div>
-
+    This is where we are putting the schedule. {{ scheduler.bestSchedule }}
+    <br><br>
+    <!--These are all of the jobs. {{ scheduler.jobs }} <br> <br>
+    This is a list of everyone's name <br> -->
+    <!-- {{ scheduler.volunteers }} -->
+    <div ng-repeat="job in scheduler.bestSchedule">
+        {{scheduler.volunteerById(job._id).firstName}} {{scheduler.volunteerById(job._id).lastName}} works at {{job.commitments}}
+    </div>
 
 </div>
-
-<br>

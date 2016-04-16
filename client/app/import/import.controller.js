@@ -44,6 +44,7 @@ class ImportController {
           email: v['E-mail'],
           firstName: v['First name'],
           trainingAt: v['I will attend training at'],
+          isJudge: v[''] === "AS_JUDGE",
           jobPreference1: v['Job Preference #1'],
           jobPreference2: v['Job Preference #2'],
           lastName: v['Last name'],

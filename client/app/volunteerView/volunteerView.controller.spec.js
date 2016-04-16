@@ -1,21 +1,36 @@
 'use strict';
 
-describe('Component: VolunteerViewComponent', function () {
+describe('Controller: Volunteer View', function() {
 
   // load the controller's module
   beforeEach(module('ulyssesCreatorsApp'));
+  beforeEach(module('stateMock'));
+  beforeEach(module('socketMock'));
 
-  var VolunteerViewComponent, scope;
+  var scope;
+  var volunteerView;
+  var state;
+  var $httpBackend;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($componentController, $rootScope) {
+  beforeEach(inject(function(_$httpBackend_, $controller, $rootScope, $state) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('/api/volunteers')
+      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    $httpBackend.expectGET('/api/jobs')
+      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+      $httpBackend.expectGET('/api/schedules')
+        .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+
     scope = $rootScope.$new();
-    VolunteerViewComponent = $componentController('VolunteerViewComponent', {
+    state = $state;
+    volunteerView = $controller('volunteerViewController', {
       $scope: scope
     });
   }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  it('should pass a dummy test', function() {
+    $httpBackend.flush();
+    expect(1).toBe(1);
   });
 });
