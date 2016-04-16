@@ -272,7 +272,7 @@
           <b>Schedule:</b>
           <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id)">
             <li>
-              <p>{{commitment.jobTitle}}: {{commitment.start}} - {{commitment.end}}</p>
+              <p>{{volunteerView.getJobById(commitment._id).jobTitle}}: {{commitment.start}} - {{commitment.end}}</p>
             </li>
           </ul>
         </ul>

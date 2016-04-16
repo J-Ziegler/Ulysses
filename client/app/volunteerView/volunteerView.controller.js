@@ -92,6 +92,22 @@
       }
     }
 
+    getJobById(id) {
+        for (var i = 0; i < self.jobs.length; i++) {
+            if (self.jobs[i]._id === id) {
+                return self.jobs[i];
+            }
+        }
+    }
+
+    militaryToHuman(militaryTime) {
+        var h = "";
+        var m = "";
+        if (militaryTime.length === 3) {
+
+        }
+    }
+
   }
 
   angular.module('ulyssesCreatorsApp')
