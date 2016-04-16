@@ -48,7 +48,7 @@
 
                 self.$http.put('/api/schedules/' + self.schedules._id, {
                     schedule: s,
-                    rating: self.schedules[0].rating;
+                    rating: self.schedules[0].rating
                 });
             }
         }

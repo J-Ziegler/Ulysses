@@ -19,6 +19,8 @@ describe('Controller: MainController', function() {
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
     $httpBackend.expectGET('/api/jobs')
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+      $httpBackend.expectGET('/api/schedules')
+        .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
     scope = $rootScope.$new();
     state = $state;
