@@ -30,7 +30,7 @@
           <br>
 
           <b>Schedule:</b>
-          <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id)">
+          <ul ng-repeat="commitment in volunteerView.getVolunteerSchedule(volunteer._id) | orderBy: 'start'">
             <li>
               <p>{{volunteerView.getJobById(commitment._id).jobTitle}}: {{volunteerView.militaryToHuman(commitment.start)}} - {{volunteerView.militaryToHuman(commitment.end)}}</p>
             </li>

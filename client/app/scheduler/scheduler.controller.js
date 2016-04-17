@@ -60,9 +60,13 @@
 
         //deal with job length stuff by randomly breaking up jobs a lot...
         makeJobs() {
-            for (var i = 0; i < 425; i++) {
-                var a = parseInt(Math.random() * 1199)
-                self.jobs.push({'_id': i, 'start': a, 'end': a + parseInt(Math.random() * 1199)})
+            for (var i = 0; i < 500; i++) {
+                var sHour = parseInt(Math.random() * 24) * 100;
+                var sMin = parseInt(Math.random() * 60);
+                var eHour = (parseInt(Math.random() * 4) + 1) * 100;
+                var s = sHour + sMin;
+                var e = s + eHour;
+                self.jobs.push({'_id': i, 'start': s, 'end': e})
             }
             //person structure {'_id': i,'commitments':[],'preferences':[]}}
             //commitment {'name': i, 'start':n1,'end':n2}

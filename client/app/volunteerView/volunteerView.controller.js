@@ -127,7 +127,7 @@
 
     getVolunteerSchedule(id) {
       var sched = this.schedules[0].schedule;
-      
+
       for (var i = 0; i < sched.length; i++) {
         if (sched[i]._id === id) {
           return sched[i].commitments;
@@ -144,18 +144,23 @@
     }
 
     militaryToHuman(mTime) {
-        var militaryTime = mTime.toString();
-        var h = "";
-        var m = "";
+        var h = parseInt(mTime / 100) % 12;
+        var m = parseInt(mTime % 100);
+        var am = "AM";
 
-        if (militaryTime.length === 3) {
-            h += militaryTime.substring(0,1);
-        } else {
-            h += militaryTime.substring(0,2);
+        if (h === 0) {
+            h = 12
         }
-        m += militaryTime.substring(militaryTime.length - 2);
 
-        return h + ":" + m;
+        if (mTime > 1200) {
+            am = "PM"
+        }
+
+        if (m < 10) {
+            m = "0" + m;
+        }
+
+        return h + ":" + m + am;
     }
 
   }
