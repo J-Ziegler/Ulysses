@@ -40,6 +40,8 @@
         console.log("Deleting " + volunteer.firstName + " " + volunteer.lastName + "...");
         self.removeJobsOfVolunteer(volunteer._id);
         self.removeFromVolunteers(volunteer._id);
+        this.editMode = false;
+        this.selected = ''
       } else {
         console.log("The volunteer has not been deleted.");
       }
@@ -64,8 +66,7 @@
         console.log("Removing " + id + " from the volunteer database...");
         self.$http.delete('/api/volunteers/' + id);
     }
-
-    //this function just makes the editing stuff appear or disappear
+    
     editVolunteer(id){
       self.editMode = true;
       self.$http.get('/api/volunteers/' + id).then(response => {
@@ -74,9 +75,9 @@
     }
 
     saveEdits(volunteer){
+      
       self.editMode = false;
       self.selected = ''
-      //this is where we'll put all the actual editing stuff.
     }
 
 
