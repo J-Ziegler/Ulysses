@@ -12,6 +12,7 @@
       this.schedules = [];
       this.selected = "";
       this.editMode = false;
+
       //below are our editing things
       this.firstName = "";
       this.lastName = "";
@@ -125,29 +126,36 @@
 
 
     getVolunteerSchedule(id) {
-      //console.log(this.schedules[0].schedule);
-      //console.log(this.schedules.rating);
-      for (var i = 0; i < this.schedules[0].schedule.length; i++) {
-        if (this.schedules[0].schedule[i]._id === id) {
-          return this.schedules[0].schedule[i].commitments;
+      var sched = this.schedules[0].schedule;
+      
+      for (var i = 0; i < sched.length; i++) {
+        if (sched[i]._id === id) {
+          return sched[i].commitments;
         }
       }
     }
 
     getJobById(id) {
         for (var i = 0; i < self.jobs.length; i++) {
-            if (self.jobs[i]._id === id) {
+            if (self.jobs[i]._id == id) {
                 return self.jobs[i];
             }
         }
     }
 
-    militaryToHuman(militaryTime) {
+    militaryToHuman(mTime) {
+        var militaryTime = mTime.toString();
         var h = "";
         var m = "";
-        if (militaryTime.length === 3) {
 
+        if (militaryTime.length === 3) {
+            h += militaryTime.substring(0,1);
+        } else {
+            h += militaryTime.substring(0,2);
         }
+        m += militaryTime.substring(militaryTime.length - 2);
+
+        return h + ":" + m;
     }
 
   }
