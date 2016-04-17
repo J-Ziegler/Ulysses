@@ -113,6 +113,9 @@
     }
 
     saveEdits(volunteer){
+      self.editMode = false;
+      self.selected = ''
+
       this.coachEmail = document.getElementById('coachEmail').value;
       this.coachName = document.getElementById('coachName').value;
       this.division = document.getElementbyId('division').value;
@@ -151,8 +154,9 @@
       this.workPhone = document.getElementById('workPhone').value;
       this.zip = document.getElementById('zip').value;
 
-      self.editMode = false;
-      self.selected = ''
+      //use an http.put to update all of the api Information, also need to add conditional statements to throw
+      //pop ups if some of the information is not filled in. 
+
     }
 
 
