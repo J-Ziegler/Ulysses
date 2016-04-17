@@ -5,6 +5,8 @@ angular.module('ulyssesCreatorsApp')
     $stateProvider
       .state('jobView', {
         url: '/jobView',
-        template: '<job-view></job-view>'
+        templateUrl: 'app/jobView/jobView.html',
+        controller: 'jobViewController',
+        controllerAs: 'jobView'
       });
   });

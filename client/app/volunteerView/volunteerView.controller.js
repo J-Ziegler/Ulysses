@@ -12,44 +12,6 @@
       this.schedules = [];
       this.selected = "";
       this.editMode = false;
-      //below are our editing things
-      this.firstName = "";
-      this.lastName = "";
-      this.assoc = "";
-      this.email = "";
-      this.phone = "";
-      this.workPhone = "";
-      this.fax = "";
-      this.street1 = "";
-      this.street2 = "";
-      this.city = "";
-      this.state = "";
-      this.zip = "";
-      this.country = "";
-      this.region = "";
-      this.division = "";
-      this.coachName = "";
-      this.coachEmail = "";
-      this.jobPreference1 = "";
-      this.jobPreference2 = "";
-      this.trainingAt = "";
-      this.lunchPreference = "";
-      this.membershipName = "";
-      this.membershipRegion = "";
-      this.membershipNumber = "";
-      this.problem = "";
-      this.tShirt = "";
-      this.assocExp = "";
-      this.childTeam = "";
-      this.coachExp = "";
-      this.comment = "";
-      this.current = "";
-      this.jobComment = "";
-      this.memberExp = "";
-      this.modifyOn = "";
-      this.positionsHeld = "";
-      this.submitDate = "";
-      this.username = "";
 
 
 
@@ -105,23 +67,17 @@
 
     //this function just makes the editing stuff appear or disappear
     editVolunteer(id){
-      self.selected = id;
       self.editMode = true;
+      self.$http.get('/api/volunteers/' + id).then(response => {
+        self.selected = response.data;
+      });
     }
 
     saveEdits(volunteer){
-      this.editVolunteer(volunteer)
+      self.editMode = false;
+      self.selected = ''
       //this is where we'll put all the actual editing stuff.
     }
-
-    expandDetails(item){
-      if (this.selected === "") {
-        this.selected = item['_id']
-      } else {
-        this.selected = "";
-      }
-      item.show = !item.show;
-    };
 
 
     getVolunteerSchedule(id) {
