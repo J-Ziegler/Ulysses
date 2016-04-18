@@ -17,8 +17,8 @@
           <!-- <a align="right" ng-click="" ng-show="true" ng-href="/volunteers/schedule/{{volunteer._id}}"  class="btn btn-sm btn-success group-item-calendar align-right"><span class="glyphicon glyphicon-list"></span></a> -->
           <!--</div>-->
           <div class="pull-right">
-            <ul ng-hide = "volunteerView.editMode" ng-click="volunteerView.editVolunteer(volunteer._id)"  class="btn btn-default"><span class="glyphicon glyphicon-wrench" style="color:green"></span></ul>
-            <ul ng-click="volunteerView.deleteVolunteer(volunteer)"  class="btn btn-default"><span class="glyphicon glyphicon-fire" style="color:red"></span></ul>
+            <div ng-show="isAdmin()"><ul ng-hide="volunteerView.editMode" ng-click="volunteerView.editVolunteer(volunteer._id)"  class="btn btn-default"><span class="glyphicon glyphicon-wrench" style="color:green"></span></ul></div>
+            <ul ng-show="isAdmin()" ng-click="volunteerView.deleteVolunteer(volunteer)"  class="btn btn-default"><span  class="glyphicon glyphicon-fire" style="color:red"></span></ul>
           </div>
           <b>Email: </b> {{volunteer.email}}
           <br>
