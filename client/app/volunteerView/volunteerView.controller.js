@@ -448,11 +448,17 @@
     }
 
     militaryToHuman(militaryTime) {
-        var h = "";
-        var m = "";
-        if (militaryTime.length === 3) {
-
-        }
+      var inputTime = militaryTime.toString();
+      var h = inputTime.substring(0, inputTime.length - 2);
+      var m = inputTime.slice(-2);
+      var a = "";
+      if (Number(h) >= 12){
+        h = (h % 12).toString();
+        a += "PM";
+      } else {
+        a += "AM";
+      }
+      return h + ':' + m + ' ' + a;
     }
 
   }
