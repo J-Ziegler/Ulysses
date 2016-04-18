@@ -49,8 +49,8 @@
                     for (var n = 0; n < jobsArray[j].shifts[s].numberofVolunteers; n++) {
                         shiftsArray.push({
                             _id: jobsArray[j]._id,
-                            start: jobsArray[j].shifts[s].shiftStart,
-                            end: jobsArray[j].shifts[s].shiftEnd
+                            start: jobsArray[j].shifts[s].start,
+                            end: jobsArray[j].shifts[s].end
                         });
                     }
                 }
@@ -59,7 +59,7 @@
             return shiftsArray;
         }
 
-        //deal with job length stuff by randomly breaking up jobs a lot...
+        // Creates a bunch of fake jobs, for demo and testing.
         makeJobs() {
             for (var i = 0; i < 250; i++) {
                 var sHour = parseInt(Math.random() * 24) * 100;
