@@ -118,18 +118,15 @@
             var count = 0;
             for (var j = 0; j < self.jobs.length; j++) {
                 for (var v = 0; v <= self.arr.length; v++) {
-                    if (self.insertJob(j, ((v + w) % self.arr.length))) {
-                        console.log("Here");
+                    if (true){//self.insertJob(j, ((v + w) % self.arr.length))) {
                         w = v + 1;
-                        self.arr[v].commitments.push(self.jobs[j]);
+                        self.arr[w].commitments.push(self.jobs[j]);
                         break;
                     } else {
                         count++;
                     }
                 }
             }
-            console.log("Count: " + count);
-            console.log("w " + w);
         }
 
         // For a @volunteer, see if @job can be given to the volunteer.

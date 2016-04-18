@@ -447,19 +447,21 @@
         }
     }
 
-    militaryToHuman(militaryTime) {
-      var inputTime = militaryTime.toString();
-      var h = inputTime.substring(0, inputTime.length - 2);
-      var m = inputTime.slice(-2);
-      var a = "";
-      if (Number(h) >= 12){
-        h = (h % 12).toString();
-        a += "PM";
-      } else {
-        a += "AM";
-      }
-      return h + ':' + m + ' ' + a;
-    }
+    militaryToHuman(mTime) {
+ +        var militaryTime = mTime.toString();
+          var h = "";		          var h = "";
+          var m = "";		          var m = "";
+ -        if (militaryTime.length === 3) {
+
+ +        if (militaryTime.length === 3) {
+ +            h += militaryTime.substring(0,1);
+ +        } else {
+ +            h += militaryTime.substring(0,2);
+          }		          }
+ +        m += militaryTime.substring(militaryTime.length - 2);
+ +
+ +        return h + ":" + m;
+      }		      }
 
   }
 
