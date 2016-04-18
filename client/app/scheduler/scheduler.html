@@ -1,3 +1,4 @@
+<div ng-show="nav.hasRole('admin')">
 <button class='btn btn-primary btn-sm' ng-click="scheduler.makeSchedules()">Make lots of schedules</button>
 <br>
 <h1>Number of Unassigned Jobs: {{scheduler.checkAllJobsAssigned()}}</h1>
@@ -12,4 +13,5 @@
         {{scheduler.volunteerById(job._id).firstName}} {{scheduler.volunteerById(job._id).lastName}} works at {{job.commitments}}
     </div>
 
+</div>
 </div>
