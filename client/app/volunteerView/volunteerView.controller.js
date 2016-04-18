@@ -448,20 +448,24 @@
     }
 
     militaryToHuman(mTime) {
- +        var militaryTime = mTime.toString();
-          var h = "";		          var h = "";
-          var m = "";		          var m = "";
- -        if (militaryTime.length === 3) {
+        var h = parseInt(mTime / 100) % 12;
+        var m = parseInt(mTime % 100);
+        var am = "AM";
 
- +        if (militaryTime.length === 3) {
- +            h += militaryTime.substring(0,1);
- +        } else {
- +            h += militaryTime.substring(0,2);
-          }		          }
- +        m += militaryTime.substring(militaryTime.length - 2);
- +
- +        return h + ":" + m;
-      }		      }
+        if (h === 0) {
+            h = 12
+        }
+
+        if (mTime > 1200) {
+            am = "PM"
+        }
+
+        if (m < 10) {
+            m = "0" + m;
+        }
+
+        return h + ":" + m + am;
+    }
 
   }
 

@@ -61,7 +61,7 @@
 
         //deal with job length stuff by randomly breaking up jobs a lot...
         makeJobs() {
-            for (var i = 0; i < 50; i++) {
+            for (var i = 0; i < 500; i++) {
                 var sHour = parseInt(Math.random() * 24) * 100;
                 var sMin = parseInt(Math.random() * 60);
                 var eHour = (parseInt(Math.random() * 4) + 1) * 100;
@@ -115,15 +115,11 @@
 
         generateSchedule() {
             var w = 0;
-            var count = 0;
             for (var j = 0; j < self.jobs.length; j++) {
                 for (var v = 0; v <= self.arr.length; v++) {
-                    if (true){//self.insertJob(j, ((v + w) % self.arr.length))) {
+                    if (self.insertJob(j, ((v + w) % self.arr.length))) {
                         w = v + 1;
-                        self.arr[w].commitments.push(self.jobs[j]);
                         break;
-                    } else {
-                        count++;
                     }
                 }
             }
@@ -132,19 +128,14 @@
         // For a @volunteer, see if @job can be given to the volunteer.
         insertJob(j, v) {
             //if not conflicts, insert and return true, else return false
-            var job = self.jobs[j];
-            var commitments = self.arr[v].commitments;
-
-            var status = false;
-
-            for (var c = 0; c < commitments.length; c++) {
-                if (!(((job.start > commitments[c].start) && (job.start < commitments[c].end)) || // Start time is not within this commitment
-                    ((job.end   > commitments[c].start) && (job.end   < commitments[c].end)))) {
-
-                    return true;
+            for (var c = 0; c < self.arr[v].commitments.length; c++) {
+                if (((self.jobs[j].start > self.arr[v].commitments[c].start) && (self.jobs[j].start < self.arr[v].commitments[c].end)) ||
+                    ((self.jobs[j].end   > self.arr[v].commitments[c].start) && (self.jobs[j].end   < self.arr[v].commitments[c].end))) {
+                    return false;
                 }
             }
-            return status;
+            self.arr[v].commitments.push(self.jobs[j]);
+            return true;
         }
 
         checkAllJobsAssigned() {
