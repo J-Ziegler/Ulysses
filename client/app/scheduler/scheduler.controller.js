@@ -24,44 +24,43 @@
 
             /*
             $http.get('/api/jobs').then(response => {
-            this.jobs = response.data;
-            socket.syncUpdates('job', self.jobs);
-            $scope.$watch('job', (self.shifts = self.jobsToShifts(self.jobs)))
-        });
-        */
+                this.jobs = response.data;
+                socket.syncUpdates('job', self.jobs);
+                $scope.$watch('job', (self.shifts = self.jobsToShifts(self.jobs)))
+            });
+            */
 
             self.makeJobs();
         }
 
-    //volunteerById: a way to get our volunteers by ID to display their information in the full view
-    volunteerById(id) {
-        for (var i = 0; i < self.volunteers.length; i++) {
-            if (id == self.volunteers[i]._id){
-                return self.volunteers[i];
+        //volunteerById: a way to get our volunteers by ID to display their information in the full view
+        volunteerById(id) {
+            for (var i = 0; i < self.volunteers.length; i++) {
+                if (id == self.volunteers[i]._id){
+                    return self.volunteers[i];
+                }
             }
         }
 
-    }
 
-
-    //jobsArray should be the list of jobs pulled from the DB as of this comment.
-    jobsToShifts(jobsArray) {
-        var shiftsArray = [];
-        for (var j = 0; j < jobsArray.length; j++) { // j because we are iterating though jobs
-            for (var s = 0; s < jobsArray[j].shifts.length; s++) {
-                shiftsArray.push({_id: jobsArray[j]._id,
-                    start: jobsArray[j].shifts[s].shiftStart,
-                    end: jobsArray[j].shifts[s].shiftEnd
-                })
+        //jobsArray should be the list of jobs pulled from the DB as of this comment.
+        jobsToShifts(jobsArray) {
+            var shiftsArray = [];
+            for (var j = 0; j < jobsArray.length; j++) { // j because we are iterating though jobs
+                for (var s = 0; s < jobsArray[j].shifts.length; s++) {
+                    shiftsArray.push({_id: jobsArray[j]._id,
+                        start: jobsArray[j].shifts[s].shiftStart,
+                        end: jobsArray[j].shifts[s].shiftEnd
+                    })
+                }
+                console.log(j);
             }
-            console.log(j);
+            return shiftsArray;
         }
-        return shiftsArray;
-    }
 
         //deal with job length stuff by randomly breaking up jobs a lot...
         makeJobs() {
-            for (var i = 0; i < 500; i++) {
+            for (var i = 0; i < 250; i++) {
                 var sHour = parseInt(Math.random() * 24) * 100;
                 var sMin = parseInt(Math.random() * 60);
                 var eHour = (parseInt(Math.random() * 4) + 1) * 100;
@@ -107,6 +106,7 @@
         }
 
         // TODO: Fix this. It shouldn't delete all the things, just most of them.
+        // Doesn't matter until we store things initially.
         clearVolunteerAssignments() {
             for(var i = 0; i < self.arr.length; i++) {
                 self.arr[i].commitments = [];
@@ -173,17 +173,10 @@
             }
             score = score + (5 * self.checkAllJobsAssigned());
             return score;
-            //self.print(score);
         }
-
 
         personMetric(person){
             return person.commitments.length * person.commitments.length;
-        }
-
-
-        print(arg){
-            console.log(arg);
         }
     }
 
