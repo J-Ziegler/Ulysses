@@ -33,8 +33,28 @@
         this.selected = "";
       }
       item.show = !item.show;
-    };
-    
+    }
+
+    militaryToHuman(mTime) {
+        var h = parseInt(mTime / 100) % 12;
+        var m = parseInt(mTime % 100);
+        var am = "AM";
+
+        if (h === 0) {
+            h = 12
+        }
+
+        if (mTime > 1200) {
+            am = "PM"
+        }
+
+        if (m < 10) {
+            m = "0" + m;
+        }
+
+        return h + ":" + m + am;
+    }
+
 
   }
 

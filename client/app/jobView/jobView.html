@@ -17,9 +17,9 @@
           <br>
           <b>Job Location: </b> {{job.jobLocation}}
           <br>
-          <b>Start Time: </b> {{job.startTime}}
+          <b>Start Time: </b> {{jobView.militaryToHuman(job.startTime)}}
           <br>
-          <b>End Time: </b> {{job.endTime}}
+          <b>End Time: </b> {{jobView.militaryToHuman(job.endTime)}}
           <br>
           <b>Shift Length: </b> {{job.shiftLength}}
           <br>
@@ -28,7 +28,7 @@
           <b>Shifts: </b>
           <ul ng-repeat="shift in job.shifts">
             <li>
-              {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
+              {{jobView.militaryToHuman(shift.start)}} - {{jobView.militaryToHuman(shift.end)}}, {{shift.numberofVolunteers}} volunteers
             </li>
           </ul>
           <br>
