@@ -5,12 +5,11 @@ class NavbarController {
   menu = [{
     'title': 'Home',
     'state': 'main'
-  },{
+  }];
+
+  adminMenu = [{
     'title': 'Import',
     'state': 'import'
-  },{
-    'title': 'Map',
-    'state': 'map'
   },{
     'title': 'Add a Job',
     'state': 'addJob'
@@ -20,14 +19,18 @@ class NavbarController {
   },{
     'title':'Scheduler',
     'state':'scheduler'
-  },{
+  }];
+
+  volunMenu = [{
     'title':'Volunteer View',
     'state':'volunteerView'
   },{
     'title':'Job View',
     'state':'jobView'
-  }
-  ];
+  },{
+    'title': 'Map',
+    'state': 'map'
+  }];
 
   isCollapsed = true;
   //end-non-standard
