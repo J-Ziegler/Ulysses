@@ -22,15 +22,13 @@
                 $scope.$watch('volunteer', (self.arr = self.makeVolunteers()))
             });
 
-            /*
             $http.get('/api/jobs').then(response => {
                 this.jobs = response.data;
-                socket.syncUpdates('job', self.jobs);
-                $scope.$watch('job', (self.shifts = self.jobsToShifts(self.jobs)))
+                //socket.syncUpdates('job', self.jobs);
+                $scope.$watch('job', (self.jobs = self.jobsToShifts(response.data)))
             });
-            */
 
-            self.makeJobs();
+            //self.makeJobs();
         }
 
         //volunteerById: a way to get our volunteers by ID to display their information in the full view
@@ -48,10 +46,13 @@
             var shiftsArray = [];
             for (var j = 0; j < jobsArray.length; j++) { // j because we are iterating though jobs
                 for (var s = 0; s < jobsArray[j].shifts.length; s++) {
-                    shiftsArray.push({_id: jobsArray[j]._id,
-                        start: jobsArray[j].shifts[s].shiftStart,
-                        end: jobsArray[j].shifts[s].shiftEnd
-                    })
+                    for (var n = 0; n < jobsArray[j].shifts[s].numberofVolunteers; n++) {
+                        shiftsArray.push({
+                            _id: jobsArray[j]._id,
+                            start: jobsArray[j].shifts[s].shiftStart,
+                            end: jobsArray[j].shifts[s].shiftEnd
+                        });
+                    }
                 }
                 console.log(j);
             }
