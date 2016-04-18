@@ -1,0 +1,39 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Jobs</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="txt-block" ng-repeat="job in jobView.jobs| filter: {_id: jobView.selected}">
+        <div ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open"></span></div>
+        <b>{{job.jobTitle}}</b>
+        <ul ng-show = "showdetails">
+          <b>Job Title: </b> {{job.jobTitle}}
+          <br>
+          <b>Job Description: </b> {{job.jobDescription}}
+          <br>
+          <b>Job Location: </b> {{job.jobLocation}}
+          <br>
+          <b>Start Time: </b> {{job.startTime}}
+          <br>
+          <b>End Time: </b> {{job.endTime}}
+          <br>
+          <b>Shift Length: </b> {{job.shiftLength}}
+          <br>
+          <b>Training Overlap: </b> {{job.trainOverLap}}
+          <br>
+          <b>Shifts: </b>
+          <ul ng-repeat="shift in job.shifts">
+            <li>
+              {{shift.start}} - {{shift.end}}, {{shift.numberofVolunteers}} volunteers
+            </li>
+          </ul>
+          <br>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</div>

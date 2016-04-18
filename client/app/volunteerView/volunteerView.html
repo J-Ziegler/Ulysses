@@ -9,7 +9,7 @@
   <br>
   <div class="row">
     <div class="col-lg-12">
-      <ul class="txt-block" ng-repeat="volunteer in volunteerView.volunteers | orderBy: 'lastName' | filter: {_id: volunteerView.selected}">
+      <ul class="txt-block" ng-repeat="volunteer in volunteerView.volunteers | orderBy: 'lastName' | filter: {_id: volunteerView.selected._id}">
         <div ng-click="showdetails=!showdetails"  class="btn btn-sm"><span class="glyphicon glyphicon-eye-open"></span></div>
         <b>{{ volunteer.firstName }} {{ volunteer.lastName }}</b>
         <ul class="volunteer-block" ng-show="showdetails">
@@ -45,229 +45,230 @@
     <div class="form-group">
       <label for="firstName" class="col-sm-3 control-label">First Name:&nbsp;<label class="control-label2">*</label></label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="firstName" value="{{volunteerView.firstName}}">
+        <input type="text" class="form-control" id="firstName" ng-model="volunteerView.selected.firstName">
       </div>
     </div>
     <div class="form-group">
       <label for="lastName" class="col-sm-3 control-label">Last Name:&nbsp;<label class="control-label2">*</label></label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="lastName" value="{{volunteerView.lastName}}">
+        <input type="text" class="form-control" id="lastName" ng-model="volunteerView.selected.lastName">
       </div>
     </div>
     <div class="form-group">
       <label for="assoc" class="col-sm-3 control-label">Association:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="assoc" value="{{volunteerView.assoc}}">
+        <input type="text" class="form-control" id="assoc" ng-model="volunteerView.selected.assoc">
       </div>
     </div>
     <div class="form-group">
       <label for="email" class="col-sm-3 control-label">Email:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="email" value="{{volunteerView.email}}">
+        <input type="text" class="form-control" id="email" ng-model="volunteerView.selected.email">
       </div>
     </div>
     <div class="form-group">
       <label for="phone" class="col-sm-3 control-label">Phone Number:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="phone" value="{{volunteerView.phone}}">
+        <input type="text" class="form-control" id="phone" ng-model="volunteerView.selected.phone">
       </div>
     </div>
     <div class="form-group">
       <label for="workPhone" class="col-sm-3 control-label">Work Phone Number:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="workPhone" value="{{volunteerView.workPhone}}">
+        <input type="text" class="form-control" id="workPhone" ng-model="volunteerView.selected.workPhone">
       </div>
     </div>
     <div class="form-group">
       <label for="fax" class="col-sm-3 control-label">Fax:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="fax" value="{{volunteerView.fax}}">
+        <input type="text" class="form-control" id="fax" ng-model="volunteerView.selected.fax">
       </div>
     </div>
     <div class="form-group">
       <label for="street1" class="col-sm-3 control-label">Street 1:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="street1" value="{{volunteerView.street1}}">
+        <input type="text" class="form-control" id="street1" ng-model="volunteerView.selected.street1">
       </div>
     </div>
     <div class="form-group">
       <label for="street2" class="col-sm-3 control-label">Street 2:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="street2" value="{{volunteerView.street2}}">
+        <input type="text" class="form-control" id="street2" ng-model="volunteerView.selected.street2">
       </div>
     </div>
     <div class="form-group">
       <label for="city" class="col-sm-3 control-label">City:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="city" value="{{volunteerView.city}}">
+        <input type="text" class="form-control" id="city" ng-model="volunteerView.selected.city">
       </div>
     </div>
     <div class="form-group">
       <label for="state" class="col-sm-3 control-label">State:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="state" value="{{volunteerView.state}}">
+        <input type="text" class="form-control" id="state" ng-model="volunteerView.selected.state">
       </div>
     </div>
     <div class="form-group">
       <label for="zip" class="col-sm-3 control-label">Zip Code:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="zip" value="{{volunteerView.zip}}">
+        <input type="text" class="form-control" id="zip" ng-model="volunteerView.selected.zip">
       </div>
     </div>
     <div class="form-group">
       <label for="country" class="col-sm-3 control-label">Country:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="country" value="{{volunteerView.country}}">
+        <input type="text" class="form-control" id="country" ng-model="volunteerView.selected.country">
       </div>
     </div>
     <div class="form-group">
       <label for="region" class="col-sm-3 control-label">Region:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="region" value="{{volunteerView.region}}">
+        <input type="text" class="form-control" id="region" ng-model="volunteerView.selected.region">
       </div>
     </div>
 
     <h4>Experience:</h4>
+    <br>
+    <div class="form-group">
+      <label for="assocExp" class="col-sm-3 control-label">assocExp:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="assocExp" ng-model="volunteerView.selected.assocExp">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="coachExp" ng-model="volunteerView.selected.coachExp">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="memberExp" class="col-sm-3 control-label">Member Experience:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="memberExp" ng-model="volunteerView.selected.memberExp">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="problem" class="col-sm-3 control-label">Problem:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="problem" ng-model="volunteerView.selected.problem">
+      </div>
+    </div>
     <div class="form-group">
       <label for="division" class="col-sm-3 control-label">Division:</label>
       <div class="col-sm-9">
-        <input type="number" class="form-control" id="division" value="{{volunteerView.division}}">
+        <input type="number" class="form-control" id="division" ng-model="volunteerView.selected.division">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="jobPreference1" class="col-sm-3 control-label">Job Preference 1:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="jobPreference1" ng-model="volunteerView.selected.jobPreference1">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="jobPreference2" class="col-sm-3 control-label">Job Prefernce 2:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="jobPreference2" ng-model="volunteerView.selected.jobPreference2">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="membershipNumber" class="col-sm-3 control-label">Membership Number:</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="membershipNumber" ng-model="volunteerView.selected.membershipNumber">
+      </div>
+    </div>
+
+    <h4>School Information:</h4>
+    <br>
+    <div class="form-group">
+      <label for="childTeam" class="col-sm-3 control-label">Children's Team:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="childTeam" ng-model="volunteerView.selected.childTeam">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tShirt" class="col-sm-3 control-label">T-shirt Size:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="tShirt" ng-model="volunteerView.selected.tShirt">
       </div>
     </div>
     <div class="form-group">
       <label for="coachName" class="col-sm-3 control-label">Coach Name:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="coachName" value="{{volunteerView.coachName}}">
+        <input type="text" class="form-control" id="coachName" ng-model="volunteerView.selected.coachName">
       </div>
     </div>
     <div class="form-group">
       <label for="coachEmail" class="col-sm-3 control-label">Coach Email:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="coachEmail" value="{{volunteerView.coachEmail}}">
+        <input type="text" class="form-control" id="coachEmail" ng-model="volunteerView.selected.coachEmail">
       </div>
       <div class="form-group">
-        <label for="jobPreference1" class="col-sm-3 control-label">Job Preference 1:</label>
+        <label for="positionsHeld" class="col-sm-3 control-label">Positions Held:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="jobPreference1" value="{{volunteerView.jobPreference1}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="jobPreference2" class="col-sm-3 control-label">Job Prefernce 2:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="jobPreference2" value="{{volunteerView.jobPreference2}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="trainingAt" class="col-sm-3 control-label">Training At:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="trainingAt" value="{{volunteerView.trainingAt}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="lunchPreference" class="col-sm-3 control-label">Lunch Preference:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="lunchPreference" value="{{volunteerView.lunchPreference}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="membershipName" class="col-sm-3 control-label">Memebership Name:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="membershipName" value="{{volunteerView.membershipName}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="membershipRegion" class="col-sm-3 control-label">Membership Region:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="membershipRegion" value="{{volunteerView.membershipRegion}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="membershipNumber" class="col-sm-3 control-label">Membership Number:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="membershipNumber" value="{{volunteerView.membershipNumber}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="problem" class="col-sm-3 control-label">Problem:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="problem" value="{{volunteerView.problem}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="tShirt" class="col-sm-3 control-label">T-shirt Size:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="tShirt" value="{{volunteerView.tShirt}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="assocExp" class="col-sm-3 control-label">assocExp:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="assocExp" value="{{volunteerView.assocExp}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="childTeam" class="col-sm-3 control-label">Children's Team:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="childTeam" value="{{volunteerView.childTeam}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="coachExp" class="col-sm-3 control-label">Coach Experience:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="coachExp" value="{{volunteerView.coachExp}}">
+          <input type="text" class="form-control" id="positionsHeld" ng-model="volunteerView.selected.positionsHeld">
         </div>
       </div>
       <div class="form-group">
         <label for="comment" class="col-sm-3 control-label">Comment:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="comment" value="{{volunteerView.comment}}">
+          <input type="text" class="form-control" id="comment" ng-model="volunteerView.selected.comment">
+        </div>
+      </div>
+
+      <h4>Other:</h4>
+      <br>
+      <div class="form-group">
+        <label for="trainingAt" class="col-sm-3 control-label">Training At:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="trainingAt" ng-model="volunteerView.selected.trainingAt">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lunchPreference" class="col-sm-3 control-label">Lunch Preference:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="lunchPreference" ng-model="volunteerView.selected.lunchPreference">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="membershipName" class="col-sm-3 control-label">Memebership Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="membershipName" ng-model="volunteerView.selected.membershipName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="membershipRegion" class="col-sm-3 control-label">Membership Region:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="membershipRegion" ng-model="volunteerView.selected.membershipRegion">
         </div>
       </div>
       <div class="form-group">
         <label for="current" class="col-sm-3 control-label">Current:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="current" value="{{volunteerView.current}}">
+          <input type="text" class="form-control" id="current" ng-model="volunteerView.selected.current">
         </div>
       </div>
       <div class="form-group">
         <label for="jobComment" class="col-sm-3 control-label">Job Comment:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="jobComment" value="{{volunteerView.jobComment}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="memberExp" class="col-sm-3 control-label">Member Experience:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control" id="memberExp" value="{{volunteerView.memberExp}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="modifyOn" class="col-sm-3 control-label">Modified On:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="modifyOn" value="{{volunteerView.modifyOn}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="positionsHeld" class="col-sm-3 control-label">Positions Held:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="positionsHeld" value="{{volunteerView.positionsHeld}}">
+          <input type="text" class="form-control" id="jobComment" ng-model="volunteerView.selected.jobComment">
         </div>
       </div>
       <div class="form-group">
         <label for="submitDate" class="col-sm-3 control-label">Submission Date:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="submitDate" value="{{volunteerView.submitDate}}">
+          <input type="text" class="form-control" id="submitDate" ng-model="volunteerView.selected.submitDate">
         </div>
       </div>
       <div class="form-group">
         <label for="username" class="col-sm-3 control-label">Username:</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="username" value="{{volunteerView.username}}">
+          <input type="text" class="form-control" id="username" ng-model="volunteerView.selected.username">
         </div>
       </div>
       <div class="pull-right">
         <br>
-        <div ng-show = "volunteerView.editMode" ng-click="volunteerView.saveEdits()"  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save pull-right" style="color:green"></span></div>
+        <div ng-show = "volunteerView.editMode" ng-click="volunteerView.saveEdits(volunteerView.selected)"  class="btn btn-default"><span class="glyphicon glyphicon-floppy-save pull-right" style="color:green"></span></div>
       </div>
     </div>
   </div>

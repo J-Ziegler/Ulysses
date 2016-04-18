@@ -1,0 +1,44 @@
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+}
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero-unit {
+  position: relative;
+  padding: 30px 15px;
+  color: #F5F5F5;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #4393B9;
+}
+
+.navbar-text {
+  margin-left: 15px;
+}
+
+.txt-block {
+  border: 1px solid steelblue;
+  border-radius: 3px;
+  padding: 4px;
+  margin: 6px;
+  display: block;
+  background: white;
+}
+.volunteer-block {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 4px;
+  margin: 6px;
+  display: block;
+  background: white;
+}

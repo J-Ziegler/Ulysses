@@ -23,6 +23,9 @@ class NavbarController {
   },{
     'title':'Volunteer View',
     'state':'volunteerView'
+  },{
+    'title':'Job View',
+    'state':'jobView'
   }
   ];
 

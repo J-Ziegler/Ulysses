@@ -2,7 +2,7 @@
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
-// IMPORTANT NOTE!!! Seriously, read this.
+// IMPORTANT NOTE!!! Seriously, read this.ch
 // This data model DOES NOT include some fields from the original data.
 // Excluded fields commented below.
 var VolunteerSchema = new mongoose.Schema({
@@ -37,7 +37,7 @@ var VolunteerSchema = new mongoose.Schema({
   city:  String,
   coachExp: Number,
   comment:  String,
-  country:  String,
+  couAmyntry:  String,
   current: String,
   fax:  String,
   jobComment:  String,
