@@ -113,29 +113,31 @@
             }
         }
 
+        // TODO: Abstract this
         generateSchedule() {
-            var w = 0;
-            for (var j = 0; j < self.jobs.length; j++) {
-                for (var v = 0; v <= self.arr.length; v++) {
-                    if (self.insertJob(j, ((v + w) % self.arr.length))) {
-                        w = v + 1;
+            var jobs = self.jobs.slice();
+
+            while (jobs.length !== 0) {
+                var currJob = jobs.pop();
+                var canInsert = true;
+                var w = 0;
+
+                for (var v = 0; v < self.arr.length; v++) {
+                    for (var c = 0; c < self.arr[v].commitments.length; c++) {
+                        var currCommitment = self.arr[v].commitments[c];
+                        if ((currJob.start > currCommitment.start && currJob.start < currCommitment.end) ||
+                            (currJob.end   > currCommitment.start && currJob.end   < currCommitment.end)) {
+                                canInsert = false;
+                        }
+                    }
+                    if (canInsert) {
+                        self.arr[v].commitments.push(currJob);
                         break;
                     }
                 }
-            }
-        }
 
-        // For a @volunteer, see if @job can be given to the volunteer.
-        insertJob(j, v) {
-            //if not conflicts, insert and return true, else return false
-            for (var c = 0; c < self.arr[v].commitments.length; c++) {
-                if (((self.jobs[j].start > self.arr[v].commitments[c].start) && (self.jobs[j].start < self.arr[v].commitments[c].end)) ||
-                    ((self.jobs[j].end   > self.arr[v].commitments[c].start) && (self.jobs[j].end   < self.arr[v].commitments[c].end))) {
-                    return false;
-                }
+                self.arr = self.shuffleArray(self.arr);
             }
-            self.arr[v].commitments.push(self.jobs[j]);
-            return true;
         }
 
         checkAllJobsAssigned() {
