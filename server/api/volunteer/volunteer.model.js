@@ -37,7 +37,7 @@ var VolunteerSchema = new mongoose.Schema({
   city:  String,
   coachExp: Number,
   comment:  String,
-  country:  String,
+  couAmyntry:  String,
   current: String,
   fax:  String,
   jobComment:  String,
