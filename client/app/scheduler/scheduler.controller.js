@@ -17,6 +17,7 @@
 
             $http.get('/api/volunteers').then(response => {
                 self.volunteers = response.data;
+                console.log("Volunteers loaded.");
                 socket.syncUpdates('volunteer', self.volunteers);
                 $scope.$watch('volunteer', (self.arr = self.makeVolunteers()))
             });
@@ -29,8 +30,8 @@
         });
         */
 
-        self.makeJobs();
-    }
+            self.makeJobs();
+        }
 
     //volunteerById: a way to get our volunteers by ID to display their information in the full view
     volunteerById(id) {
@@ -60,7 +61,7 @@
 
         //deal with job length stuff by randomly breaking up jobs a lot...
         makeJobs() {
-            for (var i = 0; i < 500; i++) {
+            for (var i = 0; i < 50; i++) {
                 var sHour = parseInt(Math.random() * 24) * 100;
                 var sMin = parseInt(Math.random() * 60);
                 var eHour = (parseInt(Math.random() * 4) + 1) * 100;
@@ -68,15 +69,13 @@
                 var e = s + eHour;
                 self.jobs.push({'_id': i, 'start': s, 'end': e})
             }
-            //person structure {'_id': i,'commitments':[],'preferences':[]}}
-            //commitment {'name': i, 'start':n1,'end':n2}
-            //preference {'thing':j,'magnitude':m}
+            console.log("Jobs have been generated.");
         }
 
         makeVolunteers() {
+            console.log("Processing volunteers...");
             var fakeV = []; // Array of fake volunteers
             for (var i = 0; i < self.volunteers.length; i++) {
-                var a = parseInt(Math.random() * 100)
                 fakeV.push({_id: self.volunteers[i]._id, commitments: [], preferences: []});
             }
             //person structure {'_id': i,'commitments':[],'preferences':[]}}
@@ -87,16 +86,15 @@
         }
 
         makeSchedules() {
-            var rating = 0;
+            var rate = 0;
             for (var i = 0; i < 1000; i++) {
                 self.clearVolunteerAssignments();
                 self.generateSchedule();
-                //(rating = self.rateSchedule() &&
-                //console.log(rating));
-                if (self.rateSchedule() < self.bestRating) {
-                    self.bestRating = self.rateSchedule();
+                rate = self.rateSchedule();
+                if (rate < self.bestRating) {
+                    self.bestRating = rate;
                     self.bestSchedule = self.arr;
-                    console.log(self.rateSchedule());
+                    console.log(rate);
                 }
                 self.shuffleArray(self.jobs);
                 self.shuffleArray(self.volunteers);
@@ -117,26 +115,39 @@
 
         generateSchedule() {
             var w = 0;
+            var count = 0;
             for (var j = 0; j < self.jobs.length; j++) {
                 for (var v = 0; v <= self.arr.length; v++) {
                     if (self.insertJob(j, ((v + w) % self.arr.length))) {
+                        console.log("Here");
                         w = v + 1;
+                        self.arr[v].commitments.push(self.jobs[j]);
                         break;
+                    } else {
+                        count++;
                     }
                 }
             }
+            console.log("Count: " + count);
+            console.log("w " + w);
         }
 
+        // For a @volunteer, see if @job can be given to the volunteer.
         insertJob(j, v) {
             //if not conflicts, insert and return true, else return false
-            for (var c = 0; c < self.arr[v].commitments.length; c++) {
-                if (((self.jobs[j].start > self.arr[v].commitments[c].start) && (self.jobs[j].start < self.arr[v].commitments[c].end)) ||
-                ((self.jobs[j].end   > self.arr[v].commitments[c].start) && (self.jobs[j].end   < self.arr[v].commitments[c].end))) {
-                    return false;
+            var job = self.jobs[j];
+            var commitments = self.arr[v].commitments;
+
+            var status = false;
+
+            for (var c = 0; c < commitments.length; c++) {
+                if (!(((job.start > commitments[c].start) && (job.start < commitments[c].end)) || // Start time is not within this commitment
+                    ((job.end   > commitments[c].start) && (job.end   < commitments[c].end)))) {
+
+                    return true;
                 }
             }
-            self.arr[v].commitments.push(self.jobs[j]);
-            return true;
+            return status;
         }
 
         checkAllJobsAssigned() {
